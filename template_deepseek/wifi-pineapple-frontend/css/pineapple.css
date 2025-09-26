@@ -1,0 +1,253 @@
+/* WiFi Pineapple Main Stylesheet */
+:root {
+    --primary-color: #f39c12;
+    --secondary-color: #2c3e50;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
+    --light-bg: #ecf0f1;
+    --dark-bg: #2c3e50;
+    --text-light: #ecf0f1;
+    --text-dark: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    transition: all 0.3s;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: var(--secondary-color);
+    color: white;
+    transition: all 0.3s;
+    min-height: 100vh;
+    position: fixed;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background: var(--dark-bg);
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-color);
+    margin: 10px 0 0 0;
+}
+
+.hak5-logo {
+    max-width: 100px;
+    height: auto;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+}
+
+.sidebar ul li a {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: var(--primary-color);
+    background: var(--dark-bg);
+}
+
+.sidebar ul li.active > a {
+    color: var(--primary-color);
+    background: var(--dark-bg);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Main Content */
+#content {
+    width: calc(100% - 250px);
+    padding: 0;
+    min-height: 100vh;
+    margin-left: 250px;
+    transition: all 0.3s;
+}
+
+.top-navbar {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.module-content {
+    padding: 20px;
+}
+
+.module-title {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.module-description {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Status Cards */
+.status-card {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+}
+
+.status-card .card-body {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.status-icon {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-right: 15px;
+}
+
+.status-info h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+}
+
+.status-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.status-badge.active {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-badge.secure {
+    background-color: var(--info-color);
+    color: white;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #34495e;
+}
+
+.system-status {
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status-indicator.online {
+    background-color: var(--success-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+    
+    #content {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .sidebar.active {
+        margin-left: 0;
+    }
+    
+    #content.active {
+        width: calc(100% - 250px);
+        margin-left: 250px;
+    }
+}
+
+/* Module dropdown styles */
+.sidebar .nav-item.dropdown .dropdown-menu {
+    background: var(--dark-bg);
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar .nav-item.dropdown .dropdown-item {
+    color: var(--text-light);
+    padding: 10px 20px;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .nav-item.dropdown .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.sidebar .nav-item.dropdown .dropdown-header {
+    color: var(--primary-color);
+    font-size: 0.9em;
+    padding: 10px 20px;
+}
+
+.sidebar .nav-item.dropdown .dropdown-divider {
+    border-color: #34495e;
+    margin: 5px 0;
+}
+
+.sidebar .nav-item.dropdown.show > a {
+    background: var(--dark-bg);
+    color: var(--primary-color);
+}
+
+/* Ensure dropdown works correctly in sidebar */
+.sidebar .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    width: 100%;
+}
+
+.sidebar .nav-link.dropdown-toggle::after {
+    float: right;
+    margin-top: 8px;
+}

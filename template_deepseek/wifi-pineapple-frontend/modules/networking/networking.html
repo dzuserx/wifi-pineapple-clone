@@ -1,0 +1,133 @@
+<!-- networking.html placeholder -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="module-title">Networking</h1>
+            <p class="module-description">Network interface configuration, DHCP settings, and routing management.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Network Interfaces</h5>
+                </div>
+                <div class="card-body">
+                    <div id="interface-list">
+                        <!-- Interfaces will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="interface-controls mt-3">
+                        <div class="form-group">
+                            <label>Select Interface</label>
+                            <select class="form-control" id="interface-select">
+                                <option>wlan0</option>
+                                <option>wlan1</option>
+                                <option>eth0</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-warning" id="toggle-interface">
+                            <i class="fa fa-toggle-on"></i> Bring Down wlan0
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>DHCP Server</h5>
+                </div>
+                <div class="card-body">
+                    <form id="dhcp-settings">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dhcp-enabled" checked>
+                                <label class="form-check-label" for="dhcp-enabled">
+                                    Enable DHCP Server
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Lease Time (minutes)</label>
+                            <input type="number" class="form-control" id="lease-time" value="120">
+                        </div>
+                        <div class="form-group">
+                            <label>IP Range</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="dhcp-range-start" value="172.16.42.100">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="dhcp-range-end" value="172.16.42.200">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Network Configuration</h5>
+                </div>
+                <div class="card-body">
+                    <form id="network-config">
+                        <div class="form-group">
+                            <label>Hostname</label>
+                            <input type="text" class="form-control" id="hostname" value="pineapple">
+                        </div>
+                        <div class="form-group">
+                            <label>Domain</label>
+                            <input type="text" class="form-control" id="domain" value="local">
+                        </div>
+                        <div class="form-group">
+                            <label>Default Gateway</label>
+                            <input type="text" class="form-control" value="172.16.42.1">
+                        </div>
+                        <div class="form-group">
+                            <label>DNS Servers</label>
+                            <input type="text" class="form-control" value="8.8.8.8, 8.8.4.4">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>Routing Table</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm" id="routing-table">
+                            <thead>
+                                <tr>
+                                    <th>Destination</th>
+                                    <th>Gateway</th>
+                                    <th>Interface</th>
+                                    <th>Metric</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Routing data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-body text-center">
+                    <button class="btn btn-success mr-2" id="save-network-settings">
+                        <i class="fa fa-save"></i> Save Settings
+                    </button>
+                    <button class="btn btn-warning" id="restart-network">
+                        <i class="fa fa-refresh"></i> Restart Network
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

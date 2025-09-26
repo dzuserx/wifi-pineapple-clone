@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#modules" data-module="modules">Modules</a></li>
+                    <li class="breadcrumb-item active">DNS Spoof</li>
+                </ol>
+            </nav>
+            <h1 class="module-title">DNS Spoof</h1>
+            <p class="module-description">Intercept and redirect DNS queries to specified IP addresses.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>DNS Spoofing Rules</h5>
+                    <button class="btn btn-primary btn-sm" id="add-rule">
+                        <i class="fa fa-plus"></i> Add Rule
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm" id="dns-rules-table">
+                            <thead>
+                                <tr>
+                                    <th>Domain</th>
+                                    <th>Redirect To</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>google.com</td>
+                                    <td>172.16.42.1</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning"><i class="fa fa-pause"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>facebook.com</td>
+                                    <td>172.16.42.1</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning"><i class="fa fa-pause"></i></button>
+                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Add DNS Rule</h5>
+                </div>
+                <div class="card-body">
+                    <form id="dns-rule-form">
+                        <div class="form-group">
+                            <label>Domain to Spoof</label>
+                            <input type="text" class="form-control" placeholder="example.com" id="spoof-domain">
+                        </div>
+                        <div class="form-group">
+                            <label>Redirect to IP</label>
+                            <input type="text" class="form-control" placeholder="172.16.42.1" id="redirect-ip">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="enable-rule" checked>
+                                <label class="form-check-label" for="enable-rule">
+                                    Enable rule immediately
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">
+                            <i class="fa fa-save"></i> Add Rule
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>DNS Spoof Status</h5>
+                </div>
+                <div class="card-body">
+                    <div class="status-info">
+                        <div class="form-group">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="dns-spoof-enabled" checked>
+                                <label class="form-check-label" for="dns-spoof-enabled">
+                                    DNS Spoofing Enabled
+                                </label>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Active Rules:</strong> 2
+                        </div>
+                        <div class="stat-item">
+                            <strong>Queries Spoofed:</strong> 1,542
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

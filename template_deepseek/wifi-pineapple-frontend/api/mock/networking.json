@@ -1,0 +1,48 @@
+{
+    "interfaces": [
+        {
+            "name": "wlan0",
+            "status": "up",
+            "ip": "172.16.42.1",
+            "mac": "00:11:22:33:44:55",
+            "mode": "AP"
+        },
+        {
+            "name": "wlan1",
+            "status": "up",
+            "ip": "192.168.1.100",
+            "mac": "00:11:22:33:44:56",
+            "mode": "Client"
+        },
+        {
+            "name": "eth0",
+            "status": "down",
+            "ip": null,
+            "mac": "00:11:22:33:44:57",
+            "mode": "Ethernet"
+        }
+    ],
+    "dhcp": {
+        "enabled": true,
+        "leaseTime": 120,
+        "range": {
+            "start": "172.16.42.100",
+            "end": "172.16.42.200"
+        },
+        "leases": 8
+    },
+    "routing": [
+        {
+            "destination": "default",
+            "gateway": "172.16.42.1",
+            "interface": "wlan0",
+            "metric": 0
+        },
+        {
+            "destination": "192.168.1.0/24",
+            "gateway": "0.0.0.0",
+            "interface": "wlan1",
+            "metric": 1
+        }
+    ]
+}

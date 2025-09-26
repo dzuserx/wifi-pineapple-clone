@@ -1,0 +1,74 @@
+Please provide content or download link for each of thye missing file below: 
+
+
+wifi-pineapple-frontend/
+├── index.html => already provided
+├── css/
+│   ├── bootstrap.min.css => missing
+│   ├── font-awesome.min.css => missing
+│   ├── pineapple.css => already provided
+│   └── themes/
+│       ├── light.css => already provided
+│       └── dark.css => already provided
+├── js/
+│   ├── jquery.min.js => missing
+│   ├── bootstrap.min.js => missing
+│   ├── vue.min.js => missing
+│   ├── pineapple.js
+│   ├── modules/
+│   │   ├── dashboard.js => already provided
+│   │   ├── recon.js => missing
+│   │   ├── pineap.js => missing
+│   │   ├── networking.js => missing
+│   │   ├── modules.js => missing
+│   │   ├── reporting.js => missing
+│   │   └── help.js => missing
+│   └── utils/
+│       ├── api.js => already provided
+│       ├── theme.js => already provided
+│       └── helpers.js => missing
+├── img/
+│   ├── logos/
+│   │   ├── hak5-logo.png => missing
+│   │   └── pineapple-logo.png => missing
+│   ├── icons/
+│   │   ├── dashboard.png => missing
+│   │   ├── recon.png => missing
+│   │   ├── pineap.png => missing
+│   │   ├── networking.png => missing
+│   │   ├── modules.png => missing
+│   │   ├── reporting.png => missing
+│   │   └── help.png => missing
+│   └── ui-screenshots/
+│       ├── light-mode/
+│       └── dark-mode/
+├── modules/
+│   ├── dashboard/
+│   │   └── dashboard.html => already provided
+│   ├── recon/
+│   │   └── recon.html => already provided
+│   ├── pineap/
+│   │   └── pineap.html => already provided
+│   ├── networking/
+│   │   └── networking.html => already provided
+│   ├── modules/
+│   │   └── modules.html => already provided
+│   ├── reporting/
+│   │   └── reporting.html => already provided
+│   └── help/
+│       └── help.html => malready provided
+└── api/
+    └── mock/
+        ├── dashboard.json => already provided
+        ├── recon.json => already provided
+        ├── pineap.json => already provided
+        ├── networking.json => already provided
+        ├── modules.json => already provided
+        ├── reporting.json => already provided
+        └── help.json => already provided
+
+
+-------------------------
+
+<i class="fa fa-puzzle-piece"></i>
+all fa icons do not show up

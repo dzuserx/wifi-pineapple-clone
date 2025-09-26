@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#modules" data-module="modules">Modules</a></li>
+                    <li class="breadcrumb-item active">URL Sniffer</li>
+                </ol>
+            </nav>
+            <h1 class="module-title">URL Sniffer</h1>
+            <p class="module-description">Capture and analyze HTTP/HTTPS traffic from connected clients.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>Captured URLs</h5>
+                    <div>
+                        <button class="btn btn-primary btn-sm mr-2" id="start-sniffing">
+                            <i class="fa fa-play"></i> Start Sniffing
+                        </button>
+                        <button class="btn btn-secondary btn-sm" id="clear-logs">
+                            <i class="fa fa-trash"></i> Clear Logs
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm" id="url-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Client</th>
+                                    <th>URL</th>
+                                    <th>Method</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10:30:15</td>
+                                    <td>AA:BB:CC:11:22:33</td>
+                                    <td>http://example.com</td>
+                                    <td>GET</td>
+                                    <td><span class="badge badge-success">200</span></td>
+                                </tr>
+                                <tr>
+                                    <td>10:30:20</td>
+                                    <td>BB:CC:DD:22:33:44</td>
+                                    <td>https://google.com</td>
+                                    <td>GET</td>
+                                    <td><span class="badge badge-success">200</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Sniffer Settings</h5>
+                </div>
+                <div class="card-body">
+                    <form id="sniffer-settings">
+                        <div class="form-group">
+                            <label>Filter Domains</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter domains to filter (one per line)"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="log-https" checked>
+                                <label class="form-check-label" for="log-https">
+                                    Log HTTPS requests
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success btn-block" id="save-sniffer-settings">
+                            <i class="fa fa-save"></i> Save Settings
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>Statistics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="stats-info">
+                        <div class="stat-item">
+                            <strong>Total URLs Captured:</strong> 1,248
+                        </div>
+                        <div class="stat-item">
+                            <strong>Active Clients:</strong> 8
+                        </div>
+                        <div class="stat-item">
+                            <strong>Data Processed:</strong> 15.2 MB
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

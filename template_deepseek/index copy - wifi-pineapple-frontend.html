@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Pineapple - Network Penetration Testing Platform</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Replace this line: -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- With this CDN link:
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/pineapple.css">
+    <link rel="stylesheet" href="css/themes/light.css" id="theme-style">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logos/pineapple-logo.png">
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <!-- <img src="img/logos/hak5-logo.png" alt="Hak5" class="hak5-logo"> -->
+            <img src="img/logos/pineapple-logo.png" alt="Hak5" class="hak5-logo">
+            
+            <h3>WiFi Pineapple</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="#dashboard" data-module="dashboard">
+                    <i class="fa fa-dashboard"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#recon" data-module="recon">
+                    <i class="fa fa-binoculars"></i>
+                    Recon
+                </a>
+            </li>
+            <li>
+                <a href="#pineap" data-module="pineap">
+                    <i class="fa fa-wifi"></i>
+                    PineAP
+                </a>
+            </li>
+            <li>
+                <a href="#networking" data-module="networking">
+                    <i class="fa fa-sitemap"></i>
+                    Networking
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#modules" class="nav-link dropdown-toggle" data-module="modules" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-puzzle-piece"></i>
+                    Modules
+                </a>
+                <div class="dropdown-menu" aria-labelledby="modulesDropdown">
+                    <!-- Module subsections will be dynamically populated -->
+                    <h6 class="dropdown-header">Installed Modules</h6>
+                    <a class="dropdown-item module-subsection" href="#modules/url-sniffer" data-submodule="url-sniffer">
+                        <i class="fa fa-filter"></i> URL Sniffer
+                    </a>
+                    <a class="dropdown-item module-subsection" href="#modules/dns-spoof" data-submodule="dns-spoof">
+                        <i class="fa fa-globe"></i> DNS Spoof
+                    </a>
+                    <a class="dropdown-item module-subsection" href="#modules/evil-portal" data-submodule="evil-portal">
+                        <i class="fa fa-sign-in"></i> Evil Portal
+                    </a>
+                    <a class="dropdown-item module-subsection" href="#modules/network-scanner" data-submodule="network-scanner">
+                        <i class="fa fa-search"></i> Network Scanner
+                    </a>
+                    <a class="dropdown-item module-subsection" href="#modules/packet-analyzer" data-submodule="packet-analyzer">
+                        <i class="fa fa-bar-chart"></i> Packet Analyzer
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#modules" data-module="modules">
+                        <i class="fa fa-cogs"></i> Module Manager
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="#reporting" data-module="reporting">
+                    <i class="fa fa-line-chart"></i>
+                    Reporting
+                </a>
+            </li>
+            <li>
+                <a href="#help" data-module="help">
+                    <i class="fa fa-question-circle"></i>
+                    Help
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="theme-switcher">
+                <button id="theme-toggle" class="btn btn-sm btn-outline-secondary">
+                    <i class="fa fa-moon-o"></i> Dark Mode
+                </button>
+            </div>
+            <div class="system-status">
+                <span class="status-indicator online"></span>
+                <small>System Online</small>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Top Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light top-navbar">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fa fa-bars"></i>
+                </button>
+                
+                <div class="navbar-nav ml-auto">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            <i class="fa fa-user"></i> Admin
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Module Content Area -->
+        <div id="module-content" class="module-content">
+            <!-- Dashboard Module will be loaded here by default -->
+            <div id="dashboard-module">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="module-title">Dashboard</h1>
+                            <p class="module-description">Overview of your WiFi Pineapple system status and quick access to essential features.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Status Cards -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="status-card card">
+                                <div class="card-body">
+                                    <div class="status-icon">
+                                        <i class="fa fa-wifi"></i>
+                                    </div>
+                                    <div class="status-info">
+                                        <h4>PineAP</h4>
+                                        <span class="status-badge active">Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-card card">
+                                <div class="card-body">
+                                    <div class="status-icon">
+                                        <i class="fa fa-users"></i>
+                                    </div>
+                                    <div class="status-info">
+                                        <h4>Clients</h4>
+                                        <span class="status-value">24</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-card card">
+                                <div class="card-body">
+                                    <div class="status-icon">
+                                        <i class="fa fa-shield"></i>
+                                    </div>
+                                    <div class="status-info">
+                                        <h4>Security</h4>
+                                        <span class="status-badge secure">Secure</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-card card">
+                                <div class="card-body">
+                                    <div class="status-icon">
+                                        <i class="fa fa-plug"></i>
+                                    </div>
+                                    <div class="status-info">
+                                        <h4>Uptime</h4>
+                                        <span class="status-value">5d 12h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/utils/theme.js"></script>
+    <script src="js/utils/api.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/pineapple.js"></script>
+</body>
+</html>

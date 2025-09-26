@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="module-title">Recon</h1>
+            <p class="module-description">Network discovery and client monitoring tools for wireless penetration testing.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>Network Scanning</h5>
+                    <div class="scan-controls">
+                        <button class="btn btn-primary btn-sm" id="start-scan">
+                            <i class="fa fa-play"></i> Start Scan
+                        </button>
+                        <button class="btn btn-secondary btn-sm" id="stop-scan" disabled>
+                            <i class="fa fa-stop"></i> Stop Scan
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="scan-results">
+                        <div class="alert alert-info">
+                            <i class="fa fa-info-circle"></i> Click "Start Scan" to begin network discovery.
+                        </div>
+                    </div>
+                    
+                    <div class="network-list mt-3">
+                        <h6>Discovered Networks</h6>
+                        <div id="network-list">
+                            <!-- Networks will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Scan Settings</h5>
+                </div>
+                <div class="card-body">
+                    <form id="scan-settings">
+                        <div class="form-group">
+                            <label>Scan Type</label>
+                            <select class="form-control">
+                                <option>Active Scan</option>
+                                <option>Passive Scan</option>
+                                <option>Stealth Scan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Channel</label>
+                            <select class="form-control">
+                                <option>All Channels</option>
+                                <option>Channel 1</option>
+                                <option>Channel 6</option>
+                                <option>Channel 11</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Duration (seconds)</label>
+                            <input type="number" class="form-control" value="30" min="10" max="300">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>Connected Clients</h5>
+                </div>
+                <div class="card-body">
+                    <div id="client-list">
+                        <!-- Clients will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+wifi-pineapple-frontend/
+├── index.html
+├── css/
+│   ├── bootstrap.min.css
+│   ├── font-awesome.min.css
+│   ├── pineapple.css
+│   └── themes/
+│       ├── light.css
+│       └── dark.css
+├── js/
+│   ├── jquery.min.js
+│   ├── bootstrap.min.js
+│   ├── vue.min.js
+│   ├── pineapple.js
+│   ├── modules/
+│   │   ├── dashboard.js
+│   │   ├── recon.js
+│   │   ├── pineap.js
+│   │   ├── networking.js
+│   │   ├── modules.js
+│   │   ├── reporting.js
+│   │   └── help.js
+│   └── utils/
+│       ├── api.js
+│       ├── theme.js
+│       └── helpers.js
+├── img/
+│   ├── logos/
+│   │   ├── hak5-logo.png
+│   │   └── pineapple-logo.png
+│   ├── icons/
+│   │   ├── dashboard.png
+│   │   ├── recon.png
+│   │   ├── pineap.png
+│   │   ├── networking.png
+│   │   ├── modules.png
+│   │   ├── reporting.png
+│   │   └── help.png
+│   └── ui-screenshots/
+│       ├── light-mode/
+│       └── dark-mode/
+├── modules/
+│   ├── dashboard/
+│   │   └── dashboard.html
+│   ├── recon/
+│   │   └── recon.html
+│   ├── pineap/
+│   │   └── pineap.html
+│   ├── networking/
+│   │   └── networking.html
+│   ├── modules/
+│   │   └── modules.html
+│   ├── reporting/
+│   │   └── reporting.html
+│   └── help/
+│       └── help.html
+└── api/
+    └── mock/
+        ├── dashboard.json
+        ├── recon.json
+        ├── pineap.json
+        ├── networking.json
+        ├── modules.json
+        ├── reporting.json
+        └── help.json

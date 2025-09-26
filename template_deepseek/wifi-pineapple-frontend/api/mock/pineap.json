@@ -1,0 +1,34 @@
+{
+    "status": {
+        "enabled": true,
+        "poolSize": 50,
+        "ssidPool": 15,
+        "clientsCaptured": 24,
+        "beaconInterval": 100,
+        "responseInterval": 1000
+    },
+    "ssidPool": [
+        {
+            "name": "HomeWiFi",
+            "count": 8,
+            "added": "2024-01-15T09:00:00Z"
+        },
+        {
+            "name": "FreeWiFi",
+            "count": 12,
+            "added": "2024-01-15T08:30:00Z"
+        },
+        {
+            "name": "Starbucks",
+            "count": 4,
+            "added": "2024-01-15T10:15:00Z"
+        }
+    ],
+    "settings": {
+        "beaconInterval": 100,
+        "responseInterval": 1000,
+        "broadcastSSID": true,
+        "logAssociations": true,
+        "karmaMode": "standard"
+    }
+}

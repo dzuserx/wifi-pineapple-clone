@@ -1,0 +1,41 @@
+{
+    "reports": [
+        {
+            "id": 1,
+            "name": "Network Scan Report",
+            "type": "scan",
+            "created": "2024-01-15 10:30:00",
+            "size": "2.1 MB",
+            "status": "completed"
+        },
+        {
+            "id": 2,
+            "name": "Client Activity Summary",
+            "type": "activity",
+            "created": "2024-01-15 09:15:00",
+            "size": "1.5 MB",
+            "status": "completed"
+        },
+        {
+            "id": 3,
+            "name": "Security Audit",
+            "type": "audit",
+            "created": "2024-01-14 16:45:00",
+            "size": "3.2 MB",
+            "status": "completed"
+        }
+    ],
+    "statistics": {
+        "summary": {
+            "totalClients": 24,
+            "totalNetworks": 15,
+            "totalSessions": 8,
+            "dataCaptured": 2621440
+        },
+        "activity": {
+            "scansToday": 12,
+            "clientsToday": 45,
+            "dataToday": 5242880
+        }
+    }
+}

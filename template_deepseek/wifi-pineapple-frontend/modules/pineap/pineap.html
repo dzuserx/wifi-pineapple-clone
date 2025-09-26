@@ -1,0 +1,120 @@
+<!-- pineap.html placeholder -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="module-title">PineAP</h1>
+            <p class="module-description">Advanced Access Point management for wireless penetration testing and network analysis.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>PineAP Status</h5>
+                    <button class="btn btn-danger" id="toggle-pineap">
+                        <i class="fa fa-power-off"></i> Disable PineAP
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="status-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Status:</strong> <span id="pineap-status">Enabled</span>
+                            </div>
+                            <div class="col-6">
+                                <strong>Pool Size:</strong> <span id="pool-size">50</span>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <strong>SSID Pool:</strong> <span id="ssid-pool">15</span>
+                            </div>
+                            <div class="col-6">
+                                <strong>Clients Captured:</strong> <span id="clients-captured">24</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>SSID Pool Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="new-ssid" placeholder="Enter SSID to add">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="add-ssid">Add SSID</button>
+                        </div>
+                    </div>
+                    
+                    <div id="ssid-pool-list">
+                        <!-- SSID pool items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>PineAP Settings</h5>
+                </div>
+                <div class="card-body">
+                    <form id="pineap-settings">
+                        <div class="form-group">
+                            <label>Beacon Interval (ms)</label>
+                            <input type="number" class="form-control" id="beacon-interval" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Response Interval (ms)</label>
+                            <input type="number" class="form-control" id="response-interval" value="1000">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="broadcast-ssid">
+                                <label class="form-check-label" for="broadcast-ssid">
+                                    Broadcast SSID
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="log-associations">
+                                <label class="form-check-label" for="log-associations">
+                                    Log Associations
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success" id="save-settings">
+                            <i class="fa fa-save"></i> Save Settings
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>Advanced Features</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Karma Configuration</label>
+                        <select class="form-control">
+                            <option>Standard Karma</option>
+                            <option>Aggressive Karma</option>
+                            <option>Stealth Karma</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>MAC Filtering</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter MAC addresses to filter (one per line)"></textarea>
+                    </div>
+                    <button class="btn btn-info btn-sm">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

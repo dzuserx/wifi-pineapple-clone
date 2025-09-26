@@ -1,0 +1,20 @@
+{
+    "status": {
+        "pineap": "Active",
+        "clients": 24,
+        "security": "Secure",
+        "uptime": "5d 12h"
+    },
+    "recentActivity": [
+        {
+            "icon": "wifi",
+            "description": "New client connected to open network",
+            "time": "2 minutes ago"
+        },
+        {
+            "icon": "shield",
+            "description": "Security scan completed",
+            "time": "15 minutes ago"
+        }
+    ]
+}

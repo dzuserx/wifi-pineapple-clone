@@ -1,0 +1,46 @@
+{
+    "networks": [
+        {
+            "ssid": "HomeWiFi",
+            "bssid": "00:11:22:33:44:55",
+            "channel": 6,
+            "signal": -45,
+            "encryption": "WPA2",
+            "clients": 3
+        },
+        {
+            "ssid": "Office_Network",
+            "bssid": "AA:BB:CC:DD:EE:FF",
+            "channel": 11,
+            "signal": -62,
+            "encryption": "WPA2",
+            "clients": 8
+        },
+        {
+            "ssid": "GuestWiFi",
+            "bssid": "11:22:33:44:55:66",
+            "channel": 1,
+            "signal": -78,
+            "encryption": "Open",
+            "clients": 12
+        }
+    ],
+    "clients": [
+        {
+            "mac": "AA:BB:CC:11:22:33",
+            "vendor": "Apple Inc.",
+            "packets": 245,
+            "signal": -55,
+            "connectedTo": "HomeWiFi"
+        },
+        {
+            "mac": "BB:CC:DD:22:33:44",
+            "vendor": "Samsung Electronics",
+            "packets": 189,
+            "signal": -48,
+            "connectedTo": "Office_Network"
+        }
+    ],
+    "scanStatus": "completed",
+    "lastScan": "2024-01-15T10:30:00Z"
+}

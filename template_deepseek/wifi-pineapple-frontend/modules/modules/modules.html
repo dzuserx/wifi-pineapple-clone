@@ -1,0 +1,582 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb" id="modules-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#dashboard" data-module="dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Module Manager</li>
+                </ol>
+            </nav>
+            <h1 class="module-title">Module Manager</h1>
+            <p class="module-description">Manage installed modules and access individual module interfaces. Extend your WiFi Pineapple's capabilities with powerful tools.</p>
+        </div>
+    </div>
+    
+    <!-- Quick Stats Row -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card status-card">
+                <div class="card-body text-center">
+                    <i class="fa fa-puzzle-piece fa-2x text-primary mb-2"></i>
+                    <h3 id="total-modules">5</h3>
+                    <p class="text-muted">Total Modules</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card status-card">
+                <div class="card-body text-center">
+                    <i class="fa fa-play-circle fa-2x text-success mb-2"></i>
+                    <h3 id="active-modules">3</h3>
+                    <p class="text-muted">Active Modules</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card status-card">
+                <div class="card-body text-center">
+                    <i class="fa fa-plug fa-2x text-warning mb-2"></i>
+                    <h3 id="available-modules-count">2</h3>
+                    <p class="text-muted">Available</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card status-card">
+                <div class="card-body text-center">
+                    <i class="fa fa-download fa-2x text-info mb-2"></i>
+                    <h3 id="updates-available">0</h3>
+                    <p class="text-muted">Updates</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Access Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>Quick Access</h5>
+                    <div class="btn-group">
+                        <button class="btn btn-sm btn-outline-secondary" id="refresh-modules">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <a href="#modules/url-sniffer" class="card module-quick-card text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fa fa-filter fa-2x text-primary mb-2"></i>
+                                    <h6>URL Sniffer</h6>
+                                    <small class="text-muted">HTTP/HTTPS traffic analysis</small>
+                                    <div class="mt-2">
+                                        <span class="badge badge-success">Active</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <a href="#modules/dns-spoof" class="card module-quick-card text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fa fa-globe fa-2x text-success mb-2"></i>
+                                    <h6>DNS Spoof</h6>
+                                    <small class="text-muted">DNS query redirection</small>
+                                    <div class="mt-2">
+                                        <span class="badge badge-success">Active</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <a href="#modules/evil-portal" class="card module-quick-card text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fa fa-sign-in fa-2x text-warning mb-2"></i>
+                                    <h6>Evil Portal</h6>
+                                    <small class="text-muted">Captive portal management</small>
+                                    <div class="mt-2">
+                                        <span class="badge badge-secondary">Inactive</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <a href="#modules/network-scanner" class="card module-quick-card text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fa fa-search fa-2x text-info mb-2"></i>
+                                    <h6>Network Scanner</h6>
+                                    <small class="text-muted">Advanced network discovery</small>
+                                    <div class="mt-2">
+                                        <span class="badge badge-success">Active</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <a href="#modules/packet-analyzer" class="card module-quick-card text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="fa fa-bar-chart fa-2x text-danger mb-2"></i>
+                                    <h6>Packet Analyzer</h6>
+                                    <small class="text-muted">Deep packet inspection</small>
+                                    <div class="mt-2">
+                                        <span class="badge badge-secondary">Inactive</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Module Management -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="moduleTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="installed-tab" data-toggle="tab" href="#installed" role="tab">
+                                <i class="fa fa-th-list"></i> Installed Modules
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="available-tab" data-toggle="tab" href="#available" role="tab">
+                                <i class="fa fa-download"></i> Available Modules
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="updates-tab" data-toggle="tab" href="#updates" role="tab">
+                                <i class="fa fa-refresh"></i> Updates
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab">
+                                <i class="fa fa-cog"></i> Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-body">
+                    <div class="tab-content" id="moduleTabContent">
+                        <!-- Installed Modules Tab -->
+                        <div class="tab-pane fade show active" id="installed" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>Installed Modules (5)</h6>
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control form-control-sm" id="module-search" placeholder="Search modules...">
+                                </div>
+                            </div>
+                            
+                            <div class="row" id="installed-modules-list">
+                                <!-- URL Sniffer Module -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="card module-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">
+                                                    <i class="fa fa-filter text-primary"></i> URL Sniffer
+                                                </h6>
+                                                <span class="badge badge-success">v2.1.0</span>
+                                            </div>
+                                            <p class="card-text small text-muted">
+                                                Captures and analyzes HTTP/HTTPS traffic from connected clients. Provides detailed URL logging and analysis.
+                                            </p>
+                                            <div class="module-info small mb-2">
+                                                <span class="text-muted">Author: Hak5</span>
+                                                <span class="mx-2">•</span>
+                                                <span class="text-muted">Size: 2.3 MB</span>
+                                            </div>
+                                            <div class="module-actions">
+                                                <button class="btn btn-success btn-sm toggle-module" data-module="url-sniffer">
+                                                    <i class="fa fa-pause"></i> Disable
+                                                </button>
+                                                <a href="#modules/url-sniffer" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-cog"></i> Configure
+                                                </a>
+                                                <button class="btn btn-outline-secondary btn-sm">
+                                                    <i class="fa fa-info"></i> Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- DNS Spoof Module -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="card module-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">
+                                                    <i class="fa fa-globe text-success"></i> DNS Spoof
+                                                </h6>
+                                                <span class="badge badge-success">v1.5.2</span>
+                                            </div>
+                                            <p class="card-text small text-muted">
+                                                Intercept and redirect DNS queries to specified IP addresses. Perfect for phishing and redirection attacks.
+                                            </p>
+                                            <div class="module-info small mb-2">
+                                                <span class="text-muted">Author: Hak5</span>
+                                                <span class="mx-2">•</span>
+                                                <span class="text-muted">Size: 1.8 MB</span>
+                                            </div>
+                                            <div class="module-actions">
+                                                <button class="btn btn-success btn-sm toggle-module" data-module="dns-spoof">
+                                                    <i class="fa fa-pause"></i> Disable
+                                                </button>
+                                                <a href="#modules/dns-spoof" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-cog"></i> Configure
+                                                </a>
+                                                <button class="btn btn-outline-secondary btn-sm">
+                                                    <i class="fa fa-info"></i> Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Evil Portal Module -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="card module-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">
+                                                    <i class="fa fa-sign-in text-warning"></i> Evil Portal
+                                                </h6>
+                                                <span class="badge badge-success">v3.0.1</span>
+                                            </div>
+                                            <p class="card-text small text-muted">
+                                                Create captive portals for credential harvesting and client engagement. Multiple templates included.
+                                            </p>
+                                            <div class="module-info small mb-2">
+                                                <span class="text-muted">Author: Hak5</span>
+                                                <span class="mx-2">•</span>
+                                                <span class="text-muted">Size: 4.2 MB</span>
+                                            </div>
+                                            <div class="module-actions">
+                                                <button class="btn btn-secondary btn-sm toggle-module" data-module="evil-portal">
+                                                    <i class="fa fa-play"></i> Enable
+                                                </button>
+                                                <a href="#modules/evil-portal" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-cog"></i> Configure
+                                                </a>
+                                                <button class="btn btn-outline-secondary btn-sm">
+                                                    <i class="fa fa-info"></i> Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Network Scanner Module -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="card module-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">
+                                                    <i class="fa fa-search text-info"></i> Network Scanner
+                                                </h6>
+                                                <span class="badge badge-success">v1.0.0</span>
+                                            </div>
+                                            <p class="card-text small text-muted">
+                                                Advanced network discovery and mapping with detailed client information and signal analysis.
+                                            </p>
+                                            <div class="module-info small mb-2">
+                                                <span class="text-muted">Author: Community</span>
+                                                <span class="mx-2">•</span>
+                                                <span class="text-muted">Size: 1.0 MB</span>
+                                            </div>
+                                            <div class="module-actions">
+                                                <button class="btn btn-success btn-sm toggle-module" data-module="network-scanner">
+                                                    <i class="fa fa-pause"></i> Disable
+                                                </button>
+                                                <a href="#modules/network-scanner" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-cog"></i> Configure
+                                                </a>
+                                                <button class="btn btn-outline-secondary btn-sm">
+                                                    <i class="fa fa-info"></i> Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Packet Analyzer Module -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="card module-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">
+                                                    <i class="fa fa-bar-chart text-danger"></i> Packet Analyzer
+                                                </h6>
+                                                <span class="badge badge-success">v2.3.0</span>
+                                            </div>
+                                            <p class="card-text small text-muted">
+                                                Deep packet inspection and analysis with real-time filtering and detailed protocol information.
+                                            </p>
+                                            <div class="module-info small mb-2">
+                                                <span class="text-muted">Author: Hak5</span>
+                                                <span class="mx-2">•</span>
+                                                <span class="text-muted">Size: 5.2 MB</span>
+                                            </div>
+                                            <div class="module-actions">
+                                                <button class="btn btn-secondary btn-sm toggle-module" data-module="packet-analyzer">
+                                                    <i class="fa fa-play"></i> Enable
+                                                </button>
+                                                <a href="#modules/packet-analyzer" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-cog"></i> Configure
+                                                </a>
+                                                <button class="btn btn-outline-secondary btn-sm">
+                                                    <i class="fa fa-info"></i> Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Available Modules Tab -->
+                        <div class="tab-pane fade" id="available" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6>Available Modules (2)</h6>
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Search available modules...">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6>WiFi Deauth</h6>
+                                            <p class="small text-muted">Deauthentication attack tool for wireless network testing.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <small class="text-muted">Author: Community</small>
+                                                    <br>
+                                                    <small class="text-muted">Size: 800 KB</small>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm">Install</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6>VPN Detector</h6>
+                                            <p class="small text-muted">Detect and analyze VPN connections on the network.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <small class="text-muted">Author: Hak5</small>
+                                                    <br>
+                                                    <small class="text-muted">Size: 1.2 MB</small>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm">Install</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Updates Tab -->
+                        <div class="tab-pane fade" id="updates" role="tabpanel">
+                            <div class="text-center py-5">
+                                <i class="fa fa-check-circle fa-3x text-success mb-3"></i>
+                                <h5>All modules are up to date</h5>
+                                <p class="text-muted">Your installed modules are running the latest versions.</p>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fa fa-refresh"></i> Check for Updates
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Settings Tab -->
+                        <div class="tab-pane fade" id="settings" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Module Settings</h6>
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Auto-update modules</label>
+                                            <select class="form-control">
+                                                <option>Disabled</option>
+                                                <option>Notify only</option>
+                                                <option>Auto-install security updates</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Module installation path</label>
+                                            <input type="text" class="form-control" value="/sd/modules">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enable-logs">
+                                                <label class="form-check-label" for="enable-logs">
+                                                    Enable module logging
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Save Settings</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>System Information</h6>
+                                    <div class="system-info">
+                                        <div class="info-item">
+                                            <strong>Modules Directory:</strong> 
+                                            <code>/pineapple/modules</code>
+                                        </div>
+                                        <div class="info-item">
+                                            <strong>Available Space:</strong> 
+                                            <span class="text-success">1.8 GB free</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <strong>Last Update Check:</strong> 
+                                            <span>2024-01-15 10:30:00</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h6>Danger Zone</h6>
+                                        <div class="alert alert-warning">
+                                            <small>
+                                                <i class="fa fa-warning"></i> 
+                                                These actions cannot be undone. Proceed with caution.
+                                            </small>
+                                        </div>
+                                        <button class="btn btn-outline-danger btn-sm mr-2">
+                                            <i class="fa fa-trash"></i> Clear Module Data
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="fa fa-refresh"></i> Reinstall All Modules
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.module-quick-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #e9ecef;
+}
+
+.module-quick-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+
+.module-card {
+    border: 1px solid #e9ecef;
+    transition: border-color 0.2s;
+}
+
+.module-card:hover {
+    border-color: #007bff;
+}
+
+.module-actions .btn {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.info-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+</style>
+
+<script>
+class ModulesManager {
+    constructor() {
+        this.init();
+    }
+    
+    async init() {
+        this.setupEventListeners();
+        this.updateStats();
+    }
+    
+    setupEventListeners() {
+        $('#refresh-modules').on('click', () => {
+            this.refreshModules();
+        });
+        
+        $('.toggle-module').on('click', (e) => {
+            this.toggleModule($(e.target).closest('button').data('module'));
+        });
+        
+        $('#module-search').on('input', () => {
+            this.filterModules();
+        });
+    }
+    
+    refreshModules() {
+        Helpers.showNotification('Refreshing module list...', 'info');
+        setTimeout(() => {
+            this.updateStats();
+            Helpers.showNotification('Module list refreshed', 'success');
+        }, 1000);
+    }
+    
+    toggleModule(moduleName) {
+        const button = $(`.toggle-module[data-module="${moduleName}"]`);
+        const isEnabled = button.html().includes('Disable');
+        
+        if (isEnabled) {
+            button.html('<i class="fa fa-play"></i> Enable');
+            button.removeClass('btn-success').addClass('btn-secondary');
+            Helpers.showNotification(`Module ${moduleName} disabled`, 'warning');
+        } else {
+            button.html('<i class="fa fa-pause"></i> Disable');
+            button.removeClass('btn-secondary').addClass('btn-success');
+            Helpers.showNotification(`Module ${moduleName} enabled`, 'success');
+        }
+        
+        this.updateStats();
+    }
+    
+    filterModules() {
+        const searchTerm = $('#module-search').val().toLowerCase();
+        
+        $('.module-card').each(function() {
+            const moduleText = $(this).text().toLowerCase();
+            if (moduleText.includes(searchTerm)) {
+                $(this).parent().show();
+            } else {
+                $(this).parent().hide();
+            }
+        });
+    }
+    
+    updateStats() {
+        const totalModules = $('.module-card').length;
+        const activeModules = $('.toggle-module.btn-success').length;
+        
+        $('#total-modules').text(totalModules);
+        $('#active-modules').text(activeModules);
+        $('#available-modules-count').text('2'); // Hardcoded for demo
+        $('#updates-available').text('0');
+    }
+}
+
+new ModulesManager();
+</script>

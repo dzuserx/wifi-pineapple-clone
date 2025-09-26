@@ -1,0 +1,30 @@
+/* dark.css placeholder */
+/* Dark Theme Styles */
+body.dark-theme {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body.dark-theme .card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+body.dark-theme .top-navbar {
+    background: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-theme .module-title {
+    color: var(--text-primary);
+}
+
+body.dark-theme .module-description {
+    color: var(--text-secondary);
+}

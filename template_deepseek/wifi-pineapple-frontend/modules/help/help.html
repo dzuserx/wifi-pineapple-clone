@@ -1,0 +1,124 @@
+<!-- help.html placeholder -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="module-title">Help & Support</h1>
+            <p class="module-description">Documentation, FAQs, and system information for your WiFi Pineapple.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Quick Links</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="#documentation" class="list-group-item list-group-item-action">
+                            <i class="fa fa-book"></i> Documentation
+                        </a>
+                        <a href="#faqs" class="list-group-item list-group-item-action">
+                            <i class="fa fa-question-circle"></i> FAQs
+                        </a>
+                        <a href="#system" class="list-group-item list-group-item-action">
+                            <i class="fa fa-info-circle"></i> System Info
+                        </a>
+                        <a href="#updates" class="list-group-item list-group-item-action">
+                            <i class="fa fa-download"></i> Check Updates
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>System Information</h5>
+                </div>
+                <div class="card-body">
+                    <div id="system-info">
+                        <!-- System info will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Help Resources</h5>
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="help-search" placeholder="Search help...">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs help-tabs" id="helpTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="docs-tab" data-toggle="tab" href="#documentation" role="tab">Documentation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="faq-tab" data-toggle="tab" href="#faqs" role="tab">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="support-tab" data-toggle="tab" href="#support" role="tab">Support</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3 help-tab-content">
+                        <div class="tab-pane fade show active" id="documentation" role="tabpanel">
+                            <div id="documentation-content">
+                                <!-- Documentation will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="faqs" role="tabpanel">
+                            <div id="faq-content">
+                                <!-- FAQs will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="support" role="tabpanel">
+                            <div class="support-content">
+                                <h4>Technical Support</h4>
+                                <p>For technical support and troubleshooting, please refer to the following resources:</p>
+                                
+                                <div class="support-resources">
+                                    <div class="resource-item">
+                                        <h6><i class="fa fa-book"></i> Official Documentation</h6>
+                                        <p>Complete documentation and user guides</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">View Docs</a>
+                                    </div>
+                                    
+                                    <div class="resource-item mt-3">
+                                        <h6><i class="fa fa-users"></i> Community Forum</h6>
+                                        <p>Get help from the community and share knowledge</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Visit Forum</a>
+                                    </div>
+                                    
+                                    <div class="resource-item mt-3">
+                                        <h6><i class="fa fa-envelope"></i> Contact Support</h6>
+                                        <p>Direct support for critical issues</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Contact Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-body text-center">
+                    <button class="btn btn-info mr-3" onclick="helpModule.checkForUpdates()">
+                        <i class="fa fa-download"></i> Check for Updates
+                    </button>
+                    <button class="btn btn-warning" onclick="helpModule.restartSystem()">
+                        <i class="fa fa-power-off"></i> Restart System
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

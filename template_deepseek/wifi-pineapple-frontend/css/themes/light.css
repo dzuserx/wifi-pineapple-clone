@@ -1,0 +1,20 @@
+/* light.css placeholder */
+/* Light Theme Styles */
+body.light-theme {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ecf0f1;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --border-color: #bdc3c7;
+}
+
+body.light-theme .card {
+    background: white;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+body.light-theme .top-navbar {
+    background: white !important;
+    border-bottom: 1px solid var(--border-color);
+}

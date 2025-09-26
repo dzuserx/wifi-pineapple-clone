@@ -1,0 +1,35 @@
+{
+    "documentation": [
+        {
+            "id": 1,
+            "title": "Getting Started",
+            "content": "Welcome to the WiFi Pineapple web interface. This guide will help you get started with basic operations and configuration.",
+            "examples": "# Basic setup\nconfigure network --interface wlan0 --mode AP\nstart pineap --ssid-pool 50"
+        },
+        {
+            "id": 2,
+            "title": "PineAP Configuration",
+            "content": "PineAP is the core component that handles access point functionality and client management.",
+            "examples": "# Enable PineAP\npineap enable\n\n# Add SSID to pool\npineap add-ssid \"FreeWiFi\"\n\n# Set beacon interval\npineap set-beacon-interval 100"
+        }
+    ],
+    "faqs": [
+        {
+            "id": 1,
+            "question": "How do I reset the device to factory settings?",
+            "answer": "To reset the device, hold the reset button for 10 seconds while powering on. This will restore all settings to default."
+        },
+        {
+            "id": 2,
+            "question": "Why can't I see any networks in the recon module?",
+            "answer": "Ensure that your wireless interfaces are properly configured and that you have the correct drivers installed. Check the interface status in the networking module."
+        }
+    ],
+    "systemInfo": {
+        "firmwareVersion": "2.7.0",
+        "hardwareModel": "WiFi Pineapple Mark VII",
+        "uptime": "5 days, 12 hours, 30 minutes",
+        "memoryUsage": "45% (256MB used of 512MB total)",
+        "storageUsage": "60% (3GB used of 5GB total)"
+    }
+}

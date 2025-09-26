@@ -1,0 +1,46 @@
+{
+    "installed": [
+        {
+            "name": "URL Sniffer",
+            "version": "1.2.0",
+            "description": "Captures and analyzes HTTP/HTTPS traffic",
+            "enabled": true,
+            "author": "Hak5",
+            "size": 2457600
+        },
+        {
+            "name": "DNS Spoof",
+            "version": "2.1.0",
+            "description": "DNS spoofing and redirection module",
+            "enabled": true,
+            "author": "Hak5",
+            "size": 1835008
+        },
+        {
+            "name": "Evil Portal",
+            "version": "3.0.1",
+            "description": "Captive portal and phishing module",
+            "enabled": false,
+            "author": "Hak5",
+            "size": 4194304
+        }
+    ],
+    "available": [
+        {
+            "name": "Network Scanner",
+            "version": "1.0.0",
+            "description": "Advanced network discovery and mapping",
+            "author": "Community",
+            "size": 1048576,
+            "rating": 4.5
+        },
+        {
+            "name": "Packet Analyzer",
+            "version": "2.3.0",
+            "description": "Deep packet inspection and analysis",
+            "author": "Hak5",
+            "size": 5242880,
+            "rating": 4.8
+        }
+    ]
+}

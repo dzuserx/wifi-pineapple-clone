@@ -1,0 +1,131 @@
+<!-- reporting.html placeholder -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="module-title">Reporting</h1>
+            <p class="module-description">Generate detailed reports, view statistics, and export captured data.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 id="total-clients">24</h2>
+                    <p>Total Clients</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 id="total-networks">15</h2>
+                    <p>Networks Found</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 id="total-sessions">8</h2>
+                    <p>Active Sessions</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 id="data-captured">2.5 MB</h2>
+                    <p>Data Captured</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>Generated Reports</h5>
+                    <div>
+                        <button class="btn btn-primary btn-sm mr-2" id="generate-report">
+                            <i class="fa fa-plus"></i> New Report
+                        </button>
+                        <button class="btn btn-success btn-sm mr-2" id="export-all">
+                            <i class="fa fa-download"></i> Export All
+                        </button>
+                        <button class="btn btn-danger btn-sm" id="clear-reports">
+                            <i class="fa fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="reports-list">
+                        <!-- Reports will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Report Generator</h5>
+                </div>
+                <div class="card-body">
+                    <form id="report-form">
+                        <div class="form-group">
+                            <label>Report Type</label>
+                            <select class="form-control" id="report-type">
+                                <option>Network Scan</option>
+                                <option>Client Activity</option>
+                                <option>Security Audit</option>
+                                <option>Full Summary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Time Range</label>
+                            <select class="form-control" id="time-range">
+                                <option>Last Hour</option>
+                                <option>Last 24 Hours</option>
+                                <option>Last Week</option>
+                                <option>Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Format</label>
+                            <select class="form-control">
+                                <option>HTML</option>
+                                <option>PDF</option>
+                                <option>CSV</option>
+                                <option>JSON</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>Activity Overview</h5>
+                </div>
+                <div class="card-body">
+                    <div id="activity-chart" style="height: 150px;">
+                        <!-- Chart will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>Protocol Distribution</h5>
+                </div>
+                <div class="card-body">
+                    <div id="protocol-chart">
+                        <!-- Protocol chart will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
