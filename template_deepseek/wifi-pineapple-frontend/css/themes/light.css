@@ -1,20 +1,129 @@
-/* light.css placeholder */
-/* Light Theme Styles */
+/* Light Theme Enhanced Styles */
 body.light-theme {
     --bg-primary: #ffffff;
-    --bg-secondary: #ecf0f1;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
     --text-primary: #2c3e50;
-    --text-secondary: #7f8c8d;
-    --border-color: #bdc3c7;
+    --text-secondary: #6c757d;
+    --text-muted: #adb5bd;
+    --border-color: #dee2e6;
+    --border-light: #f1f3f4;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --header-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.light-theme {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+body.light-theme .module-header {
+    background: var(--header-gradient);
 }
 
 body.light-theme .card {
-    background: white;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
-body.light-theme .top-navbar {
-    background: white !important;
-    border-bottom: 1px solid var(--border-color);
+body.light-theme .card-header {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+body.light-theme .table th {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+body.light-theme .form-control {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.light-theme .form-control:focus {
+    background: var(--input-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.25);
+}
+
+body.light-theme .dropdown-menu {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+body.light-theme .dropdown-item {
+    color: var(--text-primary);
+}
+
+body.light-theme .dropdown-item:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+body.light-theme .breadcrumb-item.active {
+    color: var(--text-muted);
+}
+
+body.light-theme .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Enhanced light theme specific styles */
+body.light-theme .stats-card {
+    color: white;
+}
+
+body.light-theme .status-item,
+body.light-theme .module-status-item {
+    border-bottom-color: var(--border-light);
+}
+
+body.light-theme .activity-item:not(:last-child)::after {
+    background: var(--border-light);
+}
+
+body.light-theme .sidebar {
+    background: var(--secondary-color);
+    color: white;
+}
+
+body.light-theme .sidebar-header {
+    background: var(--dark-bg);
+}
+
+body.light-theme .sidebar-footer {
+    background: var(--dark-bg);
+}
+
+/* Light theme specific utility classes */
+body.light-theme .bg-light {
+    background-color: var(--bg-tertiary) !important;
+}
+
+body.light-theme .border-light {
+    border-color: var(--border-light) !important;
+}
+
+/* Print styles for light theme */
+@media print {
+    body.light-theme {
+        background: white !important;
+        color: black !important;
+    }
+    
+    body.light-theme .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    body.light-theme .module-header {
+        background: white !important;
+        color: black !important;
+    }
 }

@@ -1,30 +1,174 @@
-/* dark.css placeholder */
-/* Dark Theme Styles */
+/* Dark Theme Enhanced Styles */
 body.dark-theme {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d2d;
+    --bg-tertiary: #404040;
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
+    --text-muted: #808080;
     --border-color: #404040;
+    --border-light: #4d4d4d;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --card-bg: #2d2d2d;
+    --input-bg: #404040;
+    --header-gradient: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
+}
+
+body.dark-theme {
     background-color: var(--bg-primary);
     color: var(--text-primary);
 }
 
+body.dark-theme .module-header {
+    background: var(--header-gradient);
+}
+
 body.dark-theme .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+body.dark-theme .card-header {
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+body.dark-theme .table {
+    color: var(--text-primary);
+}
+
+body.dark-theme .table th {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.dark-theme .table td {
+    border-color: var(--border-color);
+    background: var(--card-bg);
+}
+
+body.dark-theme .table-hover tbody tr:hover {
+    background-color: var(--bg-tertiary);
+}
+
+body.dark-theme .form-control {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.dark-theme .form-control:focus {
+    background: var(--input-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.25);
+    color: var(--text-primary);
+}
+
+body.dark-theme .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+body.dark-theme .dropdown-menu {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+body.dark-theme .dropdown-item {
+    color: var(--text-primary);
+}
+
+body.dark-theme .dropdown-item:hover {
     background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+body.dark-theme .breadcrumb-item.active {
+    color: var(--text-secondary);
+}
+
+body.dark-theme .text-muted {
+    color: var(--text-muted) !important;
+}
+
+body.dark-theme .alert {
+    background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
 }
 
+/* Enhanced dark theme specific styles */
+body.dark-theme .stats-card {
+    color: white;
+}
+
+body.dark-theme .status-item,
+body.dark-theme .module-status-item {
+    border-bottom-color: var(--border-color);
+}
+
+body.dark-theme .activity-item:not(:last-child)::after {
+    background: var(--border-color);
+}
+
+body.dark-theme .progress {
+    background-color: var(--bg-tertiary);
+}
+
 body.dark-theme .top-navbar {
-    background: var(--bg-secondary) !important;
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-tertiary) !important;
+    border-bottom-color: var(--border-color);
 }
 
-body.dark-theme .module-title {
-    color: var(--text-primary);
+/* Dark theme specific utility classes */
+body.dark-theme .bg-light {
+    background-color: var(--bg-tertiary) !important;
 }
 
-body.dark-theme .module-description {
-    color: var(--text-secondary);
+body.dark-theme .border-light {
+    border-color: var(--border-color) !important;
+}
+
+body.dark-theme .text-dark {
+    color: var(--text-primary) !important;
+}
+
+/* Dark theme sidebar adjustments */
+body.dark-theme .sidebar {
+    background: var(--bg-secondary);
+}
+
+body.dark-theme .sidebar-header {
+    background: var(--bg-tertiary);
+}
+
+body.dark-theme .sidebar-footer {
+    background: var(--bg-tertiary);
+}
+
+/* Print styles for dark theme */
+@media print {
+    body.dark-theme {
+        background: white !important;
+        color: black !important;
+    }
+    
+    body.dark-theme .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        background: white !important;
+    }
+    
+    body.dark-theme .module-header {
+        background: white !important;
+        color: black !important;
+    }
+    
+    body.dark-theme .table th {
+        background: #f8f9fa !important;
+        color: black !important;
+    }
 }
