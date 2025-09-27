@@ -146,7 +146,7 @@ class DNSSpoofModule {
                             <i class="fa ${toggleIcon}"></i>
                         </button>
                         <button class="btn btn-sm btn-danger delete-rule" data-id="${rule.id}">
-                            <i class="fa fa-trash"></i>
+                            <i class="bi bi-trash"></i>
                         </button>
                     </td>
                 </tr>

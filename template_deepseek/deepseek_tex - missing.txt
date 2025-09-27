@@ -70,5 +70,5 @@ wifi-pineapple-frontend/
 
 -------------------------
 
-<i class="fa fa-puzzle-piece"></i>
+<i class="bi bi-puzzle"></i>
 all fa icons do not show up

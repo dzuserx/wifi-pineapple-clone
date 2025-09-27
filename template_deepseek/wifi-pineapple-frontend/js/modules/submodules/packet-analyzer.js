@@ -54,11 +54,11 @@ class PacketAnalyzerModule {
         const button = $('#start-analysis');
         
         if (this.isAnalyzing) {
-            button.html('<i class="fa fa-stop"></i> Stop Analysis');
+            button.html('<i class="bi bi-stop"></i> Stop Analysis');
             button.removeClass('btn-primary').addClass('btn-danger');
             this.startAnalysis();
         } else {
-            button.html('<i class="fa fa-play"></i> Start Analysis');
+            button.html('<i class="bi bi-play"></i> Start Analysis');
             button.removeClass('btn-danger').addClass('btn-primary');
             this.stopAnalysis();
         }

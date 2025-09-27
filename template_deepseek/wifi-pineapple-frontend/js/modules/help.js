@@ -61,7 +61,7 @@ class HelpModule {
                 <div class="faq-item">
                     <div class="faq-question" data-toggle="collapse" data-target="#faq-${faq.id}">
                         <strong>Q: ${faq.question}</strong>
-                        <i class="fa fa-chevron-down"></i>
+                        <i class="bi bi-chevron-down"></i>
                     </div>
                     <div id="faq-${faq.id}" class="collapse">
                         <div class="faq-answer">

@@ -45,7 +45,7 @@ class PineAPModule {
                     <span class="ssid-name">${ssid.name}</span>
                     <span class="ssid-count">${ssid.count} clients</span>
                     <button class="btn btn-sm btn-danger remove-ssid" data-ssid="${ssid.name}">
-                        <i class="fa fa-times"></i>
+                        <i class="bi bi-x"></i>
                     </button>
                 </div>
             `).join('');
@@ -84,11 +84,11 @@ class PineAPModule {
         const isEnabled = button.text().includes('Disable');
         
         if (isEnabled) {
-            button.html('<i class="fa fa-power-off"></i> Enable PineAP');
+            button.html('<i class="bi bi-power"></i> Enable PineAP');
             button.removeClass('btn-danger').addClass('btn-success');
             Helpers.showNotification('PineAP disabled', 'warning');
         } else {
-            button.html('<i class="fa fa-power-off"></i> Disable PineAP');
+            button.html('<i class="bi bi-power"></i> Disable PineAP');
             button.removeClass('btn-success').addClass('btn-danger');
             Helpers.showNotification('PineAP enabled', 'success');
         }
@@ -105,7 +105,7 @@ class PineAPModule {
                     <span class="ssid-name">${ssid}</span>
                     <span class="ssid-count">0 clients</span>
                     <button class="btn btn-sm btn-danger remove-ssid">
-                        <i class="fa fa-times"></i>
+                        <i class="bi bi-x"></i>
                     </button>
                 </div>
             `);

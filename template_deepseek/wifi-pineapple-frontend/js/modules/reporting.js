@@ -45,13 +45,13 @@ class ReportingModule {
                     </div>
                     <div class="report-actions">
                         <button class="btn btn-sm btn-info view-report" data-id="${report.id}">
-                            <i class="fa fa-eye"></i> View
+                            <i class="bi bi-eye"></i> View
                         </button>
                         <button class="btn btn-sm btn-success download-report" data-id="${report.id}">
-                            <i class="fa fa-download"></i> Download
+                            <i class="bi bi-download"></i> Download
                         </button>
                         <button class="btn btn-sm btn-danger delete-report" data-id="${report.id}">
-                            <i class="fa fa-trash"></i> Delete
+                            <i class="bi bi-trash"></i> Delete
                         </button>
                     </div>
                 </div>

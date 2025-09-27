@@ -48,17 +48,17 @@ class ModulesModule {
                         <div class="module-actions">
                             ${module.enabled ? 
                                 `<button class="btn btn-warning btn-sm disable-module" data-module="${module.name}">
-                                    <i class="fa fa-pause"></i> Disable
+                                    <i class="bi bi-pause"></i> Disable
                                 </button>` :
                                 `<button class="btn btn-success btn-sm enable-module" data-module="${module.name}">
-                                    <i class="fa fa-play"></i> Enable
+                                    <i class="bi bi-play"></i> Enable
                                 </button>`
                             }
                             <button class="btn btn-info btn-sm configure-module" data-module="${module.name}">
-                                <i class="fa fa-cog"></i> Configure
+                                <i class="bi bi-gear"></i> Configure
                             </button>
                             <button class="btn btn-danger btn-sm remove-module" data-module="${module.name}">
-                                <i class="fa fa-trash"></i> Remove
+                                <i class="bi bi-trash"></i> Remove
                             </button>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ class ModulesModule {
                             <small>Size: ${Helpers.formatBytes(module.size)}</small>
                         </div>
                         <button class="btn btn-primary btn-sm install-module" data-module="${module.name}">
-                            <i class="fa fa-download"></i> Install
+                            <i class="bi bi-download"></i> Install
                         </button>
                     </div>
                 </div>

@@ -251,3 +251,18 @@ body {
     float: right;
     margin-top: 8px;
 }
+
+/* Bootstrap Icons alignment fixes */
+.bi {
+    vertical-align: -0.125em;
+}
+
+.sidebar .bi {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 10px;
+}
+
+.btn .bi {
+    margin-right: 5px;
+}

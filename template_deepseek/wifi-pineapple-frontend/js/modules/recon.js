@@ -83,7 +83,7 @@ class ReconModule {
         
         $('#scan-results').html(`
             <div class="alert alert-info">
-                <i class="fa fa-spinner fa-spin"></i> Scanning for networks...
+                <i class="bi bi-arrow-repeat fa-spin"></i> Scanning for networks...
             </div>
         `);
         
@@ -102,7 +102,7 @@ class ReconModule {
         
         $('#scan-results').html(`
             <div class="alert alert-warning">
-                <i class="fa fa-pause"></i> Scan stopped by user.
+                <i class="bi bi-pause"></i> Scan stopped by user.
             </div>
         `);
     }

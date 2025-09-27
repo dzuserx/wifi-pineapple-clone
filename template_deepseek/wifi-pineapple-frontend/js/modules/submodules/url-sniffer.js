@@ -55,12 +55,12 @@ class URLSnifferModule {
         const button = $('#start-sniffing');
         
         if (this.isSniffing) {
-            button.html('<i class="fa fa-stop"></i> Stop Sniffing');
+            button.html('<i class="bi bi-stop"></i> Stop Sniffing');
             button.removeClass('btn-primary').addClass('btn-danger');
             Helpers.showNotification('URL sniffing started', 'success');
             this.startSniffing();
         } else {
-            button.html('<i class="fa fa-play"></i> Start Sniffing');
+            button.html('<i class="bi bi-play"></i> Start Sniffing');
             button.removeClass('btn-danger').addClass('btn-primary');
             Helpers.showNotification('URL sniffing stopped', 'warning');
             this.stopSniffing();

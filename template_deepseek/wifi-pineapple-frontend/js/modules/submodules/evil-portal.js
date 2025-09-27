@@ -255,13 +255,13 @@ class EvilPortalModule {
                             </div>
                             <div>
                                 <button class="btn btn-sm btn-${isActive ? 'warning' : 'success'} activate-portal mr-1" data-id="${portal.id}">
-                                    <i class="fa fa-${isActive ? 'pause' : 'play'}"></i>
+                                    <i class="bi bi-${isActive ? 'pause' : 'play'}"></i>
                                 </button>
                                 <button class="btn btn-sm btn-info edit-portal mr-1" data-id="${portal.id}">
-                                    <i class="fa fa-edit"></i>
+                                    <i class="bi bi-pencil"></i>
                                 </button>
                                 <button class="btn btn-sm btn-danger delete-portal" data-id="${portal.id}">
-                                    <i class="fa fa-trash"></i>
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </div>
                         </div>

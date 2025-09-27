@@ -40,7 +40,7 @@ class DashboardModule {
             const html = activities.map(activity => `
                 <div class="activity-item">
                     <div class="activity-icon">
-                        <i class="fa fa-${activity.icon}"></i>
+                        <i class="bi bi-${activity.icon}"></i>
                     </div>
                     <div class="activity-content">
                         <p>${activity.description}</p>

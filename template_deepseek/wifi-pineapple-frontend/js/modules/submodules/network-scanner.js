@@ -34,11 +34,11 @@ class NetworkScannerModule {
         const button = $('#start-network-scan');
         
         if (this.isScanning) {
-            button.html('<i class="fa fa-stop"></i> Stop Scan');
+            button.html('<i class="bi bi-stop"></i> Stop Scan');
             button.removeClass('btn-primary').addClass('btn-danger');
             this.startScan();
         } else {
-            button.html('<i class="fa fa-play"></i> Start Scan');
+            button.html('<i class="bi bi-play"></i> Start Scan');
             button.removeClass('btn-danger').addClass('btn-primary');
             this.stopScan();
         }
@@ -77,7 +77,7 @@ class NetworkScannerModule {
     
     completeScan() {
         this.isScanning = false;
-        $('#start-network-scan').html('<i class="fa fa-play"></i> Start Scan')
+        $('#start-network-scan').html('<i class="bi bi-play"></i> Start Scan')
             .removeClass('btn-danger').addClass('btn-primary');
         $('#scan-status').html('<span class="badge badge-success">Complete</span>');
         

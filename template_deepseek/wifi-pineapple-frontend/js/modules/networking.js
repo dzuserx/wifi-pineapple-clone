@@ -128,11 +128,11 @@ class NetworkingModule {
         const isUp = button.text().includes('Down');
         
         if (isUp) {
-            button.html(`<i class="fa fa-toggle-off"></i> Bring Up ${interfaceName}`);
+            button.html(`<i class="bi bi-toggle-off"></i> Bring Up ${interfaceName}`);
             button.removeClass('btn-warning').addClass('btn-success');
             Helpers.showNotification(`Interface ${interfaceName} brought down`, 'warning');
         } else {
-            button.html(`<i class="fa fa-toggle-on"></i> Bring Down ${interfaceName}`);
+            button.html(`<i class="bi bi-toggle-on"></i> Bring Down ${interfaceName}`);
             button.removeClass('btn-success').addClass('btn-warning');
             Helpers.showNotification(`Interface ${interfaceName} brought up`, 'success');
         }
