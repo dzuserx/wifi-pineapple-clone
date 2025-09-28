@@ -17,14 +17,7 @@ body.light-theme {
 body.light-theme {
     background-color: var(--bg-secondary);
     color: var(--text-primary);
-
-
 }
-/* Dez 
-body.light-theme #content {
-    background: var(--bg-primary);
-}
-/* Dez */
 
 body.light-theme .module-header {
     background: var(--header-gradient);
