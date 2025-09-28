@@ -6,11 +6,13 @@ const ThemeManager = {
         this.loadTheme();
         this.applyTheme(this.currentTheme);
         this.setupSystemThemeDetection();
+        this.updateToggleButton();
     },
     
     setupSystemThemeDetection() {
         // Detect system theme preference
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // Only use system theme if no user preference is saved
             if (!localStorage.getItem('wifi-pineapple-theme')) {
                 this.currentTheme = 'dark';
                 this.applyTheme('dark');
@@ -19,9 +21,11 @@ const ThemeManager = {
         
         // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            // Only follow system theme if no user preference is set
             if (!localStorage.getItem('wifi-pineapple-theme')) {
                 this.currentTheme = e.matches ? 'dark' : 'light';
                 this.applyTheme(this.currentTheme);
+                this.updateToggleButton();
             }
         });
     },
@@ -32,6 +36,10 @@ const ThemeManager = {
         this.saveTheme();
         this.updateToggleButton();
         this.animateThemeTransition();
+        
+        // Show notification
+        const themeName = this.currentTheme === 'light' ? 'Light' : 'Dark';
+        Helpers.showNotification(`${themeName} theme activated`, 'success');
     },
     
     applyTheme(theme) {
@@ -49,6 +57,9 @@ const ThemeManager = {
         
         // Update meta theme-color for mobile browsers
         this.updateMetaThemeColor(theme);
+        
+        // Save to localStorage for persistence
+        this.saveTheme();
     },
     
     updateMetaThemeColor(theme) {
@@ -59,7 +70,7 @@ const ThemeManager = {
             document.head.appendChild(metaThemeColor);
         }
         
-        metaThemeColor.content = theme === 'dark' ? '#1a1a1a' : '#ffffff';
+        metaThemeColor.content = theme === 'dark' ? '#1a1a1a' : '#667eea';
     },
     
     animateThemeTransition() {
@@ -112,6 +123,14 @@ const ThemeManager = {
         localStorage.removeItem('wifi-pineapple-theme');
         this.setupSystemThemeDetection();
         Helpers.showNotification('Theme reset to system preference', 'info');
+    },
+    
+    getThemeInfo() {
+        return {
+            current: this.currentTheme,
+            isDark: this.isDarkMode(),
+            isSystem: !localStorage.getItem('wifi-pineapple-theme')
+        };
     }
 };
 
@@ -132,6 +151,10 @@ function isDarkMode() {
     return ThemeManager.isDarkMode();
 }
 
+function resetTheme() {
+    ThemeManager.resetToSystemTheme();
+}
+
 // Add CSS for theme transition animations
 const themeStyles = document.createElement('style');
 themeStyles.textContent = `
@@ -148,6 +171,11 @@ themeStyles.textContent = `
     .theme-transition * {
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
+    
+    /* Smooth transitions for theme changes */
+    body.light-theme, body.dark-theme {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 `;
 document.head.appendChild(themeStyles);
 
@@ -160,3 +188,13 @@ ThemeManager.toggle = function() {
         document.body.classList.remove('theme-transition');
     }, 300);
 };
+
+// Initialize theme when DOM is ready
+$(document).ready(function() {
+    initializeTheme();
+});
+
+// Export for module use
+window.ThemeManager = ThemeManager;
+window.initializeTheme = initializeTheme;
+window.toggleTheme = toggleTheme;

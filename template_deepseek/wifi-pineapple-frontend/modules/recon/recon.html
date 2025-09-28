@@ -1,18 +1,11 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="module-title">Recon</h1>
-            <p class="module-description">Network discovery and client monitoring tools for wireless penetration testing.</p>
-        </div>
-    </div>
-    
+<div class="container-fluid fade-in">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5>Network Scanning</h5>
-                    <div class="scan-controls">
-                        <button class="btn btn-primary btn-sm" id="start-scan">
+                    <h5><i class="bi bi-binoculars"></i> Network Scanning</h5>
+                    <div>
+                        <button class="btn btn-primary btn-sm mr-2" id="start-scan">
                             <i class="bi bi-play"></i> Start Scan
                         </button>
                         <button class="btn btn-secondary btn-sm" id="stop-scan" disabled>
@@ -21,17 +14,17 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div id="scan-results">
-                        <div class="alert alert-info">
-                            <i class="bi bi-info-circle"></i> Click "Start Scan" to begin network discovery.
-                        </div>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i> 
+                        Network discovery and client monitoring tools for wireless penetration testing.
                     </div>
                     
-                    <div class="network-list mt-3">
-                        <h6>Discovered Networks</h6>
-                        <div id="network-list">
-                            <!-- Networks will be populated by JavaScript -->
-                        </div>
+                    <div class="progress mb-3" style="height: 10px; display: none;" id="scan-progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                    </div>
+                    
+                    <div id="scan-results">
+                        <p class="text-muted">Click "Start Scan" to begin network discovery.</p>
                     </div>
                 </div>
             </div>
@@ -40,45 +33,99 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h5>Scan Settings</h5>
+                    <h5><i class="bi bi-gear"></i> Scan Settings</h5>
                 </div>
                 <div class="card-body">
                     <form id="scan-settings">
                         <div class="form-group">
                             <label>Scan Type</label>
-                            <select class="form-control">
-                                <option>Active Scan</option>
-                                <option>Passive Scan</option>
-                                <option>Stealth Scan</option>
+                            <select class="form-control" id="scan-type">
+                                <option value="active">Active Scan</option>
+                                <option value="passive">Passive Scan</option>
+                                <option value="stealth">Stealth Scan</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Channel</label>
-                            <select class="form-control">
-                                <option>All Channels</option>
-                                <option>Channel 1</option>
-                                <option>Channel 6</option>
-                                <option>Channel 11</option>
+                            <label>Target Channel</label>
+                            <select class="form-control" id="scan-channel">
+                                <option value="all">All Channels</option>
+                                <option value="1">Channel 1 (2.412 GHz)</option>
+                                <option value="6">Channel 6 (2.437 GHz)</option>
+                                <option value="11">Channel 11 (2.462 GHz)</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Duration (seconds)</label>
-                            <input type="number" class="form-control" value="30" min="10" max="300">
+                            <input type="number" class="form-control" id="scan-duration" value="30" min="10" max="300">
                         </div>
+                        <button type="button" class="btn btn-success btn-block" id="save-settings">
+                            <i class="bi bi-save"></i> Save Settings
+                        </button>
                     </form>
-                </div>
-            </div>
-            
-            <div class="card mt-3">
-                <div class="card-header">
-                    <h5>Connected Clients</h5>
-                </div>
-                <div class="card-body">
-                    <div id="client-list">
-                        <!-- Clients will be populated by JavaScript -->
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+// Basic recon functionality
+$(document).ready(function() {
+    $('#start-scan').on('click', function() {
+        const btn = $(this);
+        btn.pineappleLoading(true);
+        $('#stop-scan').prop('disabled', false);
+        
+        // Show progress bar
+        $('#scan-progress').show();
+        
+        // Simulate scan progress
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            $('#scan-progress .progress-bar').css('width', progress + '%');
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                btn.pineappleLoading(false);
+                $('#stop-scan').prop('disabled', true);
+                $('#scan-results').html(`
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle"></i> Scan completed successfully!
+                    </div>
+                    <div class="mt-3">
+                        <h6>Discovered Networks (3)</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item">HomeWiFi (00:11:22:33:44:55) - Channel 6</li>
+                            <li class="list-group-item">Office_Network (AA:BB:CC:DD:EE:FF) - Channel 11</li>
+                            <li class="list-group-item">GuestWiFi (11:22:33:44:55:66) - Channel 1</li>
+                        </ul>
+                    </div>
+                `);
+            }
+        }, 200);
+        
+        // Store interval for cleanup
+        btn.data('scan-interval', interval);
+    });
+    
+    $('#stop-scan').on('click', function() {
+        const btn = $('#start-scan');
+        const interval = btn.data('scan-interval');
+        
+        if (interval) {
+            clearInterval(interval);
+        }
+        
+        btn.pineappleLoading(false);
+        $(this).prop('disabled', true);
+        $('#scan-progress').hide();
+        
+        Helpers.showNotification('Scan stopped by user', 'warning');
+    });
+    
+    $('#save-settings').on('click', function() {
+        Helpers.showNotification('Scan settings saved successfully', 'success');
+    });
+});
+</script>

@@ -3,7 +3,7 @@ body.light-theme {
     --bg-primary: #ffffff;
     --bg-secondary: #f8f9fa;
     --bg-tertiary: #e9ecef;
-    --text-primary: #2c3e50;
+    --text-primary: #212529;
     --text-secondary: #6c757d;
     --text-muted: #adb5bd;
     --border-color: #dee2e6;
@@ -17,7 +17,14 @@ body.light-theme {
 body.light-theme {
     background-color: var(--bg-secondary);
     color: var(--text-primary);
+
+
 }
+/* Dez 
+body.light-theme #content {
+    background: var(--bg-primary);
+}
+/* Dez */
 
 body.light-theme .module-header {
     background: var(--header-gradient);
@@ -108,22 +115,4 @@ body.light-theme .bg-light {
 
 body.light-theme .border-light {
     border-color: var(--border-light) !important;
-}
-
-/* Print styles for light theme */
-@media print {
-    body.light-theme {
-        background: white !important;
-        color: black !important;
-    }
-    
-    body.light-theme .card {
-        box-shadow: none !important;
-        border: 1px solid #ddd !important;
-    }
-    
-    body.light-theme .module-header {
-        background: white !important;
-        color: black !important;
-    }
 }

@@ -1,20 +1,21 @@
 {
     "status": {
-        "pineap": "Active",
         "clients": 24,
-        "security": "Secure",
+        "networks": 15,
+        "modules": 3,
         "uptime": "5d 12h"
     },
     "recentActivity": [
         {
-            "icon": "wifi",
-            "description": "New client connected to open network",
-            "time": "2 minutes ago"
+            "type": "client_connected",
+            "message": "New client connected to open network",
+            "timestamp": "2024-01-15T10:28:00Z",
+            "client": "AA:BB:CC:11:22:33"
         },
         {
-            "icon": "shield",
-            "description": "Security scan completed",
-            "time": "15 minutes ago"
+            "type": "scan_completed", 
+            "message": "Network reconnaissance scan completed",
+            "timestamp": "2024-01-15T10:15:00Z"
         }
     ]
 }
