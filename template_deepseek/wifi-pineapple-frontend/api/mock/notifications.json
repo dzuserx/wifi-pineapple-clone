@@ -1,0 +1,100 @@
+{
+  "notifications": [
+    {
+      "id": 1,
+      "level": "info",
+      "title": "System Started",
+      "message": "WiFi Pineapple system has been initialized successfully.",
+      "timestamp": "2023-10-01T10:00:00Z",
+      "read": false
+    },
+    {
+      "id": 2,
+      "level": "warning",
+      "title": "High CPU Usage",
+      "message": "CPU usage has exceeded 80% for the last 5 minutes.",
+      "timestamp": "2023-10-01T09:45:00Z",
+      "read": false
+    },
+    {
+      "id": 3,
+      "level": "error",
+      "title": "Network Interface Down",
+      "message": "eth0 interface has gone down. Check cable connection.",
+      "timestamp": "2023-10-01T09:30:00Z",
+      "read": true
+    },
+    {
+      "id": 4,
+      "level": "success",
+      "title": "Campaign Started",
+      "message": "Reconnaissance campaign 'Test Scan' has started successfully.",
+      "timestamp": "2023-10-01T09:15:00Z",
+      "read": false
+    },
+    {
+      "id": 5,
+      "level": "unknown",
+      "title": "Unknown Event",
+      "message": "An unknown system event has occurred.",
+      "timestamp": "2023-10-01T09:00:00Z",
+      "read": true
+    },
+    {
+      "id": 6,
+      "level": "info",
+      "title": "Module Installed",
+      "message": "URL Sniffer module has been installed.",
+      "timestamp": "2023-10-01T08:45:00Z",
+      "read": false
+    },
+    {
+      "id": 7,
+      "level": "warning",
+      "title": "Low Disk Space",
+      "message": "Disk usage has reached 90%. Consider cleaning up old files.",
+      "timestamp": "2023-10-01T08:30:00Z",
+      "read": false
+    },
+    {
+      "id": 8,
+      "level": "success",
+      "title": "Handshake Captured",
+      "message": "WPA handshake captured for SSID 'TestNetwork'.",
+      "timestamp": "2023-10-01T08:15:00Z",
+      "read": true
+    },
+    {
+      "id": 9,
+      "level": "error",
+      "title": "Authentication Failed",
+      "message": "Failed login attempt from IP 192.168.1.100.",
+      "timestamp": "2023-10-01T08:00:00Z",
+      "read": false
+    },
+    {
+      "id": 10,
+      "level": "info",
+      "title": "PineAP Enabled",
+      "message": "PineAP has been enabled in Active mode.",
+      "timestamp": "2023-10-01T07:45:00Z",
+      "read": false
+    },
+    {
+      "id": 11,
+      "level": "warning",
+      "title": "Client Disconnected",
+      "message": "Client MAC AA:BB:CC:DD:EE:FF has disconnected unexpectedly.",
+      "timestamp": "2023-10-01T07:30:00Z",
+      "read": true
+    },
+    {
+      "id": 12,
+      "level": "success",
+      "title": "Report Generated",
+      "message": "Campaign report has been generated and saved.",
+      "timestamp": "2023-10-01T07:15:00Z",
+      "read": false
+    }
+  ]
+}

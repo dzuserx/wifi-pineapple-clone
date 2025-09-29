@@ -1,0 +1,95 @@
+{
+    "general": {
+        "deviceName": "WiFi Pineapple",
+        "timezone": "UTC",
+        "language": "English",
+        "sessionTimeout": 30,
+        "autostart": {
+            "pineap": true,
+            "web": true,
+            "ssh": false
+        }
+    },
+    "networking": {
+        "ethernet": {
+            "ip": "192.168.1.100",
+            "mask": "255.255.255.0",
+            "gateway": "192.168.1.1",
+            "dns": "8.8.8.8"
+        },
+        "wireless": {
+            "mode": "Access Point",
+            "channel": "Auto",
+            "txPower": "Medium"
+        }
+    },
+    "wifi": {
+        "ap": {
+            "ssid": "Pineapple_XXXX",
+            "security": "Open",
+            "password": "",
+            "channel": "Auto"
+        },
+        "advanced": {
+            "beaconInterval": 100,
+            "rtsThreshold": 2347,
+            "fragThreshold": 2346,
+            "shortPreamble": false
+        }
+    },
+    "leds": {
+        "powerLed": "Always On",
+        "wifiLed": "Show Signal Strength",
+        "usbLed": "On when Connected"
+    },
+    "advanced": {
+        "cpuGovernor": "Performance",
+        "memoryMgmt": "Default",
+        "enableSwap": false,
+        "enableDebug": false,
+        "verboseOutput": false,
+        "logLevel": "INFO"
+    },
+    "help": {
+        "quickStart": [
+            {
+                "title": "Getting Started",
+                "description": "Basic setup and configuration guide"
+            },
+            {
+                "title": "WiFi Configuration",
+                "description": "Setting up wireless interfaces and access points"
+            },
+            {
+                "title": "Security Best Practices",
+                "description": "Recommended security configurations"
+            },
+            {
+                "title": "Troubleshooting",
+                "description": "Common issues and solutions"
+            }
+        ],
+        "support": [
+            {
+                "title": "Hak5 Forums",
+                "url": "https://forums.hak5.org",
+                "description": "Community support and discussions"
+            },
+            {
+                "title": "Video Tutorials",
+                "url": "https://www.youtube.com/hak5",
+                "description": "Step-by-step video guides"
+            },
+            {
+                "title": "User Manual",
+                "url": "https://docs.hak5.org",
+                "description": "Complete documentation"
+            },
+            {
+                "title": "Contact Support",
+                "url": "https://shop.hak5.org/support",
+                "description": "Direct support contact"
+            }
+        ]
+    }
+}

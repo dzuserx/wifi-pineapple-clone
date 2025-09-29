@@ -1,4 +1,3 @@
-<!-- pineap.html placeholder -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -6,113 +5,709 @@
             <p class="module-description">Advanced Access Point management for wireless penetration testing and network analysis.</p>
         </div>
     </div>
-    
+
+    <!-- Navigation Tabs -->
     <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5>PineAP Status</h5>
-                    <button class="btn btn-danger" id="toggle-pineap">
-                        <i class="bi bi-power"></i> Disable PineAP
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="status-info">
-                        <div class="row">
-                            <div class="col-6">
-                                <strong>Status:</strong> <span id="pineap-status">Enabled</span>
-                            </div>
-                            <div class="col-6">
-                                <strong>Pool Size:</strong> <span id="pool-size">50</span>
+        <div class="col-12">
+            <ul class="nav nav-tabs" id="pineap-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pineap-tab" data-toggle="tab" href="#pineap" role="tab">
+                        <i class="bi bi-gear"></i> PineAP
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="open-ap-tab" data-toggle="tab" href="#open-ap" role="tab">
+                        <i class="bi bi-wifi"></i> Open AP
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="evil-wpa-tab" data-toggle="tab" href="#evil-wpa" role="tab">
+                        <i class="bi bi-shield-exclamation"></i> Evil WPA
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="evil-enterprise-tab" data-toggle="tab" href="#evil-enterprise" role="tab">
+                        <i class="bi bi-building"></i> Evil Enterprise
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="impersonation-tab" data-toggle="tab" href="#impersonation" role="tab">
+                        <i class="bi bi-person-badge"></i> Impersonation
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="clients-tab" data-toggle="tab" href="#clients" role="tab">
+                        <i class="bi bi-people"></i> Clients
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="filtering-tab" data-toggle="tab" href="#filtering" role="tab">
+                        <i class="bi bi-funnel"></i> Filtering
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content mt-4" id="pineap-tab-content">
+                <!-- PineAP Tab -->
+                <div class="tab-pane fade show active" id="pineap" role="tabpanel" aria-labelledby="pineap-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>PineAP Status</h5>
+                                    <button class="btn btn-danger btn-sm" id="toggle-pineap">
+                                        <i class="bi bi-power"></i> Disable PineAP
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="status-info">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <strong>Status:</strong> <span id="pineap-status" class="text-success">Enabled</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <strong>Pool Size:</strong> <span id="pool-size">50</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-6">
+                                                <strong>SSID Pool:</strong> <span id="ssid-pool">15</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <strong>Clients Captured:</strong> <span id="clients-captured">24</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-6">
-                                <strong>SSID Pool:</strong> <span id="ssid-pool">15</span>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Operation Mode</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="operation-mode" id="passive-mode" value="passive" checked>
+                                            <label class="form-check-label" for="passive-mode">
+                                                <strong>Passive</strong><br>
+                                                <small class="text-muted">Collect information about nearby access points, and add them to the list of potential APs to advertise. Accept connections to the Open, WPA, and Enterprise SSIDs (if enabled). Do not advertise other access points.</small>
+                                            </label>
+                                        </div>
+                                        <div class="form-check mt-3">
+                                            <input class="form-check-input" type="radio" name="operation-mode" id="active-mode" value="active">
+                                            <label class="form-check-label" for="active-mode">
+                                                <strong>Active</strong><br>
+                                                <small class="text-muted">Collect information about nearby access points. Actively advertise all SSIDs from the Impersonated AP Pool (if enabled). Respond to all client requests for any network which is permitted by the filters.</small>
+                                            </label>
+                                        </div>
+                                        <div class="form-check mt-3">
+                                            <input class="form-check-input" type="radio" name="operation-mode" id="advanced-mode" value="advanced">
+                                            <label class="form-check-label" for="advanced-mode">
+                                                <strong>Advanced</strong><br>
+                                                <small class="text-muted">All PineAP features can be individually configured; mix and match the features you need.</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary mt-3" id="apply-mode">
+                                        <i class="bi bi-check"></i> Apply Mode
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <strong>Clients Captured:</strong> <span id="clients-captured">24</span>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Basic Settings</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="pineap-basic-settings">
+                                        <div class="form-group mb-3">
+                                            <label>Beacon Interval (ms)</label>
+                                            <input type="number" class="form-control" id="beacon-interval" value="100" min="10" max="1000">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Response Interval (ms)</label>
+                                            <input type="number" class="form-control" id="response-interval" value="1000" min="100" max="5000">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="broadcast-ssid" checked>
+                                                <label class="form-check-label" for="broadcast-ssid">
+                                                    Broadcast SSID
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="log-associations" checked>
+                                                <label class="form-check-label" for="log-associations">
+                                                    Log Associations
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-success" id="save-basic-settings">
+                                            <i class="bi bi-save"></i> Save Settings
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Advanced Features</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group mb-3">
+                                        <label>Karma Configuration</label>
+                                        <select class="form-control" id="karma-config">
+                                            <option value="standard">Standard Karma</option>
+                                            <option value="aggressive">Aggressive Karma</option>
+                                            <option value="stealth">Stealth Karma</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>MAC Filtering</label>
+                                        <textarea class="form-control" id="mac-filter" rows="3" placeholder="Enter MAC addresses to filter (one per line)"></textarea>
+                                    </div>
+                                    <button class="btn btn-info" id="apply-filters">
+                                        <i class="bi bi-filter"></i> Apply Filters
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="card mt-3">
-                <div class="card-header">
-                    <h5>SSID Pool Management</h5>
-                </div>
-                <div class="card-body">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="new-ssid" placeholder="Enter SSID to add">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" id="add-ssid">Add SSID</button>
-                        </div>
-                    </div>
-                    
-                    <div id="ssid-pool-list">
-                        <!-- SSID pool items will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5>PineAP Settings</h5>
-                </div>
-                <div class="card-body">
-                    <form id="pineap-settings">
-                        <div class="form-group">
-                            <label>Beacon Interval (ms)</label>
-                            <input type="number" class="form-control" id="beacon-interval" value="100">
-                        </div>
-                        <div class="form-group">
-                            <label>Response Interval (ms)</label>
-                            <input type="number" class="form-control" id="response-interval" value="1000">
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="broadcast-ssid">
-                                <label class="form-check-label" for="broadcast-ssid">
-                                    Broadcast SSID
-                                </label>
+
+                <!-- Open AP Tab -->
+                <div class="tab-pane fade" id="open-ap" role="tabpanel" aria-labelledby="open-ap-tab">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Open SSID Configuration</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle"></i> The WiFi Pineapple can advertise a single Open SSID, or respond for any requested SSID that matches the filter rules.
+                                    </div>
+                                    <form id="open-ssid-form">
+                                        <div class="form-group mb-3">
+                                            <label for="open-ssid-name">SSID Name</label>
+                                            <input type="text" class="form-control" id="open-ssid-name" placeholder="Enter Open SSID name" value="Pineapple_Open">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="respond-any-ssid" checked>
+                                                <label class="form-check-label" for="respond-any-ssid">
+                                                    Respond for any requested SSID (Impersonate All Networks)
+                                                </label>
+                                            </div>
+                                            <small class="form-text text-muted">When enabled, the Pineapple will respond to probe requests for any SSID that matches your filter rules.</small>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="open-ssid-mac">Custom MAC Address (optional)</label>
+                                            <input type="text" class="form-control" id="open-ssid-mac" placeholder="AA:BB:CC:DD:EE:FF">
+                                            <small class="form-text text-muted">Leave blank to use default MAC address.</small>
+                                        </div>
+                                        <button type="button" class="btn btn-success" id="save-open-ssid">
+                                            <i class="bi bi-save"></i> Save Open SSID Settings
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="log-associations">
-                                <label class="form-check-label" for="log-associations">
-                                    Log Associations
-                                </label>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Open SSID Status</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="status-indicator status-indicator-without_width">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-circle-fill text-success me-2" id="open-ssid-status-icon"></i>
+                                            <span id="open-ssid-status-text">Open SSID Inactive</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-circle-fill text-info me-2" id="impersonation-status-icon"></i>
+                                            <span id="impersonation-status-text">Impersonation Disabled</span>
+                                        </div>
+                                        <div class="mt-3">
+                                            <strong>Connected Clients:</strong> <span id="open-clients-count">0</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            <strong>SSID:</strong> <span id="current-open-ssid">-</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success" id="save-settings">
-                            <i class="bi bi-save"></i> Save Settings
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="card mt-3">
-                <div class="card-header">
-                    <h5>Advanced Features</h5>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>Karma Configuration</label>
-                        <select class="form-control">
-                            <option>Standard Karma</option>
-                            <option>Aggressive Karma</option>
-                            <option>Stealth Karma</option>
-                        </select>
                     </div>
-                    <div class="form-group">
-                        <label>MAC Filtering</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter MAC addresses to filter (one per line)"></textarea>
+                </div>
+
+                <!-- Evil WPA Tab -->
+                <div class="tab-pane fade" id="evil-wpa" role="tabpanel" aria-labelledby="evil-wpa-tab">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Evil WPA Configuration</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-warning">
+                                        <i class="bi bi-exclamation-triangle"></i> Evil WPA is used to impersonate a WPA (or WPA2) PSK network. It can also be used to collect partial handshakes for use with external cracking tools when the PSK is not known.
+                                    </div>
+                                    <form id="evil-wpa-form">
+                                        <div class="form-group mb-3">
+                                            <label for="evil-wpa-ssid">Target SSID</label>
+                                            <input type="text" class="form-control" id="evil-wpa-ssid" placeholder="Enter target SSID">
+                                            <small class="form-text text-muted">Leave blank to automatically select from Recon data.</small>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="evil-wpa-password">Password (optional)</label>
+                                            <input type="password" class="form-control" id="evil-wpa-password" placeholder="Enter password if known">
+                                            <small class="form-text text-muted">If password is unknown, leave blank to capture handshakes.</small>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="capture-handshakes" checked>
+                                                <label class="form-check-label" for="capture-handshakes">
+                                                    Capture Handshakes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="evil-wpa-mac">Custom MAC Address (optional)</label>
+                                            <input type="text" class="form-control" id="evil-wpa-mac" placeholder="AA:BB:CC:DD:EE:FF">
+                                        </div>
+                                        <button type="button" class="btn btn-success" id="start-evil-wpa">
+                                            <i class="bi bi-play"></i> Start Evil WPA
+                                        </button>
+                                        <button type="button" class="btn btn-danger ms-2" id="stop-evil-wpa">
+                                            <i class="bi bi-stop"></i> Stop Evil WPA
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>Handshake Status</h5>
+                                    <div class="search-container">
+                                        <input type="text" class="form-control form-control-sm" id="handshake-search" placeholder="Search handshakes..." style="width: 200px;">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="handshake-list">
+                                        <div class="handshake-item mb-2">
+                                            <div class="d-flex justify-content-between">
+                                                <span>HomeNetwork</span>
+                                                <span class="badge bg-success">Captured</span>
+                                            </div>
+                                            <small class="text-muted">2 minutes ago</small>
+                                        </div>
+                                        <div class="handshake-item mb-2">
+                                            <div class="d-flex justify-content-between">
+                                                <span>OfficeWiFi</span>
+                                                <span class="badge bg-warning">Partial</span>
+                                            </div>
+                                            <small class="text-muted">5 minutes ago</small>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-3" id="download-handshakes">
+                                        <i class="bi bi-download"></i> Download All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn btn-info btn-sm">Apply Filters</button>
+                </div>
+
+                <!-- Evil Enterprise Tab -->
+                <div class="tab-pane fade" id="evil-enterprise" role="tabpanel" aria-labelledby="evil-enterprise-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Evil Enterprise Configuration</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle"></i> Enterprise, or EAP, WiFi authentication is typically used on corporate networks with per-user logins. The WiFi Pineapple supports three authentication types: Any, MSCHAPv2, or GTC.
+                                    </div>
+                                    <form id="evil-enterprise-form">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="enterprise-ssid">SSID Name</label>
+                                                    <input type="text" class="form-control" id="enterprise-ssid" placeholder="CorporateWiFi" value="CorporateWiFi">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="domain">Domain</label>
+                                                    <input type="text" class="form-control" id="domain" placeholder="company.com" value="company.com">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label>Authentication Method</label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="auth-method" id="auth-any" value="any" checked>
+                                                        <label class="form-check-label" for="auth-any">
+                                                            <strong>Any</strong> - Allow any authentication method
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="auth-method" id="auth-mschapv2" value="mschapv2">
+                                                        <label class="form-check-label" for="auth-mschapv2">
+                                                            <strong>MSCHAPv2</strong> - Capture challenge hashes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="auth-method" id="auth-gtc" value="gtc">
+                                                        <label class="form-check-label" for="auth-gtc">
+                                                            <strong>GTC</strong> - Capture full credentials
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label>Certificate Generation</label>
+                                                    <button type="button" class="btn btn-primary" id="generate-cert">
+                                                        <i class="bi bi-key"></i> Generate Certificate
+                                                    </button>
+                                                    <div class="mt-2" id="cert-status">
+                                                        <small class="text-muted">No certificate generated</small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="auto-auth" checked>
+                                                        <label class="form-check-label" for="auto-auth">
+                                                            Automatically authorize all accounts
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="enterprise-mac">Custom MAC Address (optional)</label>
+                                                    <input type="text" class="form-control" id="enterprise-mac" placeholder="AA:BB:CC:DD:EE:FF">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-success" id="start-evil-enterprise">
+                                            <i class="bi bi-play"></i> Start Evil Enterprise
+                                        </button>
+                                        <button type="button" class="btn btn-danger ms-2" id="stop-evil-enterprise">
+                                            <i class="bi bi-stop"></i> Stop Evil Enterprise
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Impersonation Tab -->
+                <div class="tab-pane fade" id="impersonation" role="tabpanel" aria-labelledby="impersonation-tab">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>SSID Impersonation Pool</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle"></i> In addition to responding as any network when "Impersonate All Networks" is enabled, the WiFi Pineapple can advertise additional SSIDs using the SSID Impersonation Pool.
+                                    </div>
+                                    <form id="impersonation-form">
+                                        <div class="form-group mb-3">
+                                            <label for="new-impersonation-ssid">Add SSID to Pool</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="new-impersonation-ssid" placeholder="Enter SSID to impersonate">
+                                                <button class="btn btn-primary" type="button" id="add-impersonation-ssid">
+                                                    <i class="bi bi-plus"></i> Add
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>MAC Address Options</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="mac-option" id="use-open-mac" value="open" checked>
+                                                <label class="form-check-label" for="use-open-mac">
+                                                    Use Open AP MAC address
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="mac-option" id="use-random-mac" value="random">
+                                                <label class="form-check-label" for="use-random-mac">
+                                                    Use pseudo-random MAC (unique per SSID)
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="mac-option" id="use-custom-mac" value="custom">
+                                                <label class="form-check-label" for="use-custom-mac">
+                                                    Use custom MAC address
+                                                </label>
+                                            </div>
+                                            <input type="text" class="form-control mt-2" id="custom-impersonation-mac" placeholder="AA:BB:CC:DD:EE:FF" style="display: none;">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Transmission Options</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="broadcast-impersonation" checked>
+                                                <label class="form-check-label" for="broadcast-impersonation">
+                                                    Send to broadcast address
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="unicast-impersonation">
+                                                <label class="form-check-label" for="unicast-impersonation">
+                                                    Send to specific client addresses
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>Impersonation Pool</h5>
+                                    <div class="search-container">
+                                        <input type="text" class="form-control form-control-sm" id="impersonation-pool-search" placeholder="Search SSIDs..." style="width: 200px;">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="impersonation-pool-list">
+                                        <div class="impersonation-item d-flex justify-content-between align-items-center mb-2">
+                                            <span>Starbucks WiFi</span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removeImpersonationSSID('Starbucks WiFi')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="impersonation-item d-flex justify-content-between align-items-center mb-2">
+                                            <span>Airport Free WiFi</span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removeImpersonationSSID('Airport Free WiFi')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="impersonation-item d-flex justify-content-between align-items-center mb-2">
+                                            <span>Hotel Guest</span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removeImpersonationSSID('Hotel Guest')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-warning mt-3" id="clear-impersonation-pool">
+                                        <i class="bi bi-trash"></i> Clear All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clients Tab -->
+                <div class="tab-pane fade" id="clients" role="tabpanel" aria-labelledby="clients-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>Connected Clients</h5>
+                                    <div class="search-container">
+                                        <input type="text" class="form-control form-control-sm" id="connected-clients-search" placeholder="Search clients..." style="width: 250px;">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>MAC Address</th>
+                                                    <th>IP Address</th>
+                                                    <th>SSID</th>
+                                                    <th>Connected Time</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="connected-clients-table">
+                                                <tr>
+                                                    <td><code>AA:BB:CC:DD:EE:FF</code></td>
+                                                    <td>192.168.1.101</td>
+                                                    <td>Pineapple_Open</td>
+                                                    <td>2h 15m</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="kickClient('AA:BB:CC:DD:EE:FF')">
+                                                            <i class="bi bi-person-dash"></i> Kick
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>11:22:33:44:55:66</code></td>
+                                                    <td>192.168.1.102</td>
+                                                    <td>Evil_WPA_Test</td>
+                                                    <td>45m</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="kickClient('11:22:33:44:55:66')">
+                                                            <i class="bi bi-person-dash"></i> Kick
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>77:88:99:AA:BB:CC</code></td>
+                                                    <td>192.168.1.103</td>
+                                                    <td>CorporateWiFi</td>
+                                                    <td>12m</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-danger" onclick="kickClient('77:88:99:AA:BB:CC')">
+                                                            <i class="bi bi-person-dash"></i> Kick
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>Previous Clients</h5>
+                                    <div class="search-container">
+                                        <input type="text" class="form-control form-control-sm" id="previous-clients-search" placeholder="Search previous clients..." style="width: 250px;">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>MAC Address</th>
+                                                    <th>Last Seen</th>
+                                                    <th>Associated SSIDs</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="previous-clients-table">
+                                                <tr>
+                                                    <td><code>DD:EE:FF:11:22:33</code></td>
+                                                    <td>1 hour ago</td>
+                                                    <td>HomeNetwork, OfficeWiFi</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-info" onclick="viewClientHistory('DD:EE:FF:11:22:33')">
+                                                            <i class="bi bi-eye"></i> View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>44:55:66:77:88:99</code></td>
+                                                    <td>3 hours ago</td>
+                                                    <td>Starbucks WiFi</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-info" onclick="viewClientHistory('44:55:66:77:88:99')">
+                                                            <i class="bi bi-eye"></i> View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtering Tab -->
+                <div class="tab-pane fade" id="filtering" role="tabpanel" aria-labelledby="filtering-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Client Filtering</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle"></i> The filtering page allows you to have fine control over what devices can connect to your WiFi Pineapple. You can do this by combining two filters: the Client Filter and the SSID Filter, with two modes each: Allow or Deny.
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card border-primary">
+                                                <div class="card-header bg-primary text-white">
+                                                    <h6>Client Filter</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group mb-3">
+                                                        <label>Mode</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="client-filter-mode" id="client-allow" value="allow" checked>
+                                                            <label class="form-check-label" for="client-allow">
+                                                                <strong>Allow</strong> - Only listed clients can connect
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="client-filter-mode" id="client-deny" value="deny">
+                                                            <label class="form-check-label" for="client-deny">
+                                                                <strong>Deny</strong> - Listed clients cannot connect
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="client-mac-list">MAC Addresses</label>
+                                                        <textarea class="form-control" id="client-mac-list" rows="4" placeholder="Enter MAC addresses (one per line)&#10;AA:BB:CC:DD:EE:FF&#10;11:22:33:44:55:66"></textarea>
+                                                    </div>
+                                                    <button class="btn btn-primary" id="apply-client-filter">
+                                                        <i class="bi bi-check"></i> Apply Client Filter
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card border-success">
+                                                <div class="card-header bg-success text-white">
+                                                    <h6>SSID Filter</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group mb-3">
+                                                        <label>Mode</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="ssid-filter-mode" id="ssid-allow" value="allow" checked>
+                                                            <label class="form-check-label" for="ssid-allow">
+                                                                <strong>Allow</strong> - Only listed SSIDs can be impersonated
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="ssid-filter-mode" id="ssid-deny" value="deny">
+                                                            <label class="form-check-label" for="ssid-deny">
+                                                                <strong>Deny</strong> - Listed SSIDs cannot be impersonated
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="ssid-list">SSID Names</label>
+                                                        <textarea class="form-control" id="ssid-list" rows="4" placeholder="Enter SSID names (one per line)&#10;HomeNetwork&#10;OfficeWiFi&#10;Starbucks WiFi"></textarea>
+                                                    </div>
+                                                    <button class="btn btn-success" id="apply-ssid-filter">
+                                                        <i class="bi bi-check"></i> Apply SSID Filter
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

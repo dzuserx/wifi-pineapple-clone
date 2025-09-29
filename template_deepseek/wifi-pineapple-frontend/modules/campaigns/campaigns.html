@@ -1,0 +1,440 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#dashboard" data-module="dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Campaigns</li>
+                </ol>
+            </nav>
+            <h1 class="module-title">Campaigns</h1>
+            <p class="module-description">Campaign management for automated wireless attacks and data collection.</p>
+        </div>
+    </div>
+
+    <!-- Campaign Stats -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card stats-card bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="bi bi-flag display-4 opacity-50"></i>
+                    <h3 id="total-campaigns">5</h3>
+                    <p>Total Campaigns</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card bg-success text-white">
+                <div class="card-body text-center">
+                    <i class="bi bi-play-circle display-4 opacity-50"></i>
+                    <h3 id="active-campaigns">2</h3>
+                    <p>Active Campaigns</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card bg-warning text-white">
+                <div class="card-body text-center">
+                    <i class="bi bi-pause-circle display-4 opacity-50"></i>
+                    <h3 id="paused-campaigns">1</h3>
+                    <p>Paused Campaigns</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card bg-info text-white">
+                <div class="card-body text-center">
+                    <i class="bi bi-download display-4 opacity-50"></i>
+                    <h3 id="campaign-results">124</h3>
+                    <p>Results Collected</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Tabs -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="campaignTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="manage-tab" data-toggle="tab" href="#manage" role="tab">
+                        <i class="bi bi-list-ul"></i> Manage
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="modes-tab" data-toggle="tab" href="#modes" role="tab">
+                        <i class="bi bi-sliders"></i> Campaign Modes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="editing-tab" data-toggle="tab" href="#editing" role="tab">
+                        <i class="bi bi-pencil"></i> Editing Campaigns
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="reports-tab" data-toggle="tab" href="#reports" role="tab">
+                        <i class="bi bi-file-earmark-text"></i> Reports
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="storage-tab" data-toggle="tab" href="#storage" role="tab">
+                        <i class="bi bi-cloud-download"></i> Storage & Transmission
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="formats-tab" data-toggle="tab" href="#formats" role="tab">
+                        <i class="bi bi-filetype-csv"></i> Formats
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab">
+                        <i class="bi bi-eye"></i> Review
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <div class="tab-content" id="campaignTabContent">
+                <!-- Manage Tab -->
+                <div class="tab-pane fade show active" id="manage" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5>Campaign Management</h5>
+                        <button class="btn btn-primary" id="new-campaign">
+                            <i class="bi bi-plus"></i> New Campaign
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Mode</th>
+                                    <th>Results</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SSID Harvesting Campaign</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Automated</td>
+                                    <td>45</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                        <button class="btn btn-sm btn-outline-success">Start</button>
+                                        <button class="btn btn-sm btn-outline-danger">Stop</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Client Deauth Attack</td>
+                                    <td><span class="badge badge-warning">Paused</span></td>
+                                    <td>Manual</td>
+                                    <td>12</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                        <button class="btn btn-sm btn-outline-success">Resume</button>
+                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Campaign Modes Tab -->
+                <div class="tab-pane fade" id="modes" role="tabpanel">
+                    <h5>Campaign Modes</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-play-circle text-success display-4 mb-3"></i>
+                                    <h6>Automated Mode</h6>
+                                    <p class="text-muted">Runs campaigns automatically based on predefined triggers and schedules.</p>
+                                    <button class="btn btn-success btn-sm">Select Mode</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-hand-thumbs-up text-info display-4 mb-3"></i>
+                                    <h6>Manual Mode</h6>
+                                    <p class="text-muted">User-controlled execution with real-time monitoring and adjustments.</p>
+                                    <button class="btn btn-info btn-sm">Select Mode</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-lightning-charge text-warning display-4 mb-3"></i>
+                                    <h6>Advanced Mode</h6>
+                                    <p class="text-muted">Custom scripting and API integration for complex attack scenarios.</p>
+                                    <button class="btn btn-warning btn-sm">Select Mode</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editing Campaigns Tab -->
+                <div class="tab-pane fade" id="editing" role="tabpanel">
+                    <h5>Editing Campaigns</h5>
+                    <form id="campaign-editor">
+                        <div class="form-group">
+                            <label>Campaign Name</label>
+                            <input type="text" class="form-control" placeholder="Enter campaign name">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Campaign description..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Target SSIDs</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="SSID pattern (e.g., *Home*)">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">Add</button>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Use * as wildcard</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Duration (minutes)</label>
+                            <input type="number" class="form-control" value="60" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Actions</label>
+                            <select class="form-control" multiple>
+                                <option>SSID Harvesting</option>
+                                <option>Client Deauthentication</option>
+                                <option>Beacon Flooding</option>
+                                <option>Probe Response Capture</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Campaign</button>
+                    </form>
+                </div>
+
+                <!-- Reports Tab -->
+                <div class="tab-pane fade" id="reports" role="tabpanel">
+                    <h5>Campaign Reports</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Recent Reports</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            SSID Harvest Report
+                                            <span class="badge badge-primary">Download</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Client Activity Log
+                                            <span class="badge badge-primary">Download</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Generate Report</h6>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Report Type</label>
+                                            <select class="form-control">
+                                                <option>Summary Report</option>
+                                                <option>Detailed Log</option>
+                                                <option>CSV Export</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Time Range</label>
+                                            <select class="form-control">
+                                                <option>Last 24 Hours</option>
+                                                <option>Last 7 Days</option>
+                                                <option>Custom Range</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Generate Report</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storage & Transmission Tab -->
+                <div class="tab-pane fade" id="storage" role="tabpanel">
+                    <h5>Storage & Transmission</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Local Storage</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar bg-success" style="width: 75%"></div>
+                                    </div>
+                                    <small>75% used (1.2 GB of 1.6 GB)</small>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-danger btn-sm">Clear Old Data</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Transmission Settings</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="auto-upload">
+                                        <label class="form-check-label" for="auto-upload">
+                                            Auto-upload to Cloud C2
+                                        </label>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label>Upload Frequency</label>
+                                        <select class="form-control">
+                                            <option>Real-time</option>
+                                            <option>Every 5 minutes</option>
+                                            <option>Every hour</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm">Test Connection</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formats Tab -->
+                <div class="tab-pane fade" id="formats" role="tabpanel">
+                    <h5>Data Formats</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-filetype-csv text-success display-4 mb-3"></i>
+                                    <h6>CSV</h6>
+                                    <p class="text-muted">Comma-separated values for spreadsheet analysis.</p>
+                                    <button class="btn btn-outline-success btn-sm">Set Default</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-filetype-json text-info display-4 mb-3"></i>
+                                    <h6>JSON</h6>
+                                    <p class="text-muted">Structured data format for API integration.</p>
+                                    <button class="btn btn-outline-info btn-sm">Set Default</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-file-earmark-pdf text-danger display-4 mb-3"></i>
+                                    <h6>PDF</h6>
+                                    <p class="text-muted">Portable document format for reports.</p>
+                                    <button class="btn btn-outline-danger btn-sm">Set Default</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Tab -->
+                <div class="tab-pane fade" id="review" role="tabpanel">
+                    <h5>Campaign Review</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Performance Metrics</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-6">
+                                            <h4>89%</h4>
+                                            <p>Success Rate</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4>2h 15m</h4>
+                                            <p>Avg Duration</p>
+                                        </div>
+                                    </div>
+                                    <canvas id="performanceChart" width="400" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Recent Activity</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><small class="text-muted">Campaign "SSID Harvest" completed - 23 results</small></li>
+                                        <li class="mb-2"><small class="text-muted">Manual deauth campaign started by admin</small></li>
+                                        <li class="mb-2"><small class="text-muted">Auto-upload to Cloud C2 successful</small></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Basic campaign management
+    $('#new-campaign').on('click', function() {
+        Helpers.showNotification('Creating new campaign...', 'info');
+        // Navigate to editing tab
+        $('#editing-tab').tab('show');
+    });
+
+    // Update stats periodically
+    setInterval(function() {
+        // Mock data update
+        $('#total-campaigns').text(Math.floor(Math.random() * 10) + 1);
+        $('#active-campaigns').text(Math.floor(Math.random() * 5));
+    }, 5000);
+});
+</script>
+
+<style>
+.stats-card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stats-card .card-body {
+    padding: 1rem;
+}
+
+.badge {
+    font-size: 0.75em;
+}
+
+#performanceChart {
+    max-height: 200px;
+}
+</style>

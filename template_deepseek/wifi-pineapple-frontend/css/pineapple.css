@@ -40,6 +40,43 @@ body {
     overflow-y: auto;
 }
 
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed .sidebar-header h3,
+.sidebar.collapsed ul.components li a span:not(.bi),
+.sidebar.collapsed .dropdown-menu,
+.sidebar.collapsed .system-status small {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-header {
+    padding: 20px 10px;
+}
+
+.sidebar.collapsed ul.components li a {
+    text-align: center;
+    padding: 12px 10px;
+}
+
+.sidebar.collapsed .sidebar .bi {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .sidebar-footer {
+    text-align: center;
+}
+
+.sidebar.collapsed .theme-switcher,
+.sidebar.collapsed .system-status {
+    padding: 10px 5px;
+}
+
+body.sidebar-collapsed #content {
+    margin-left: 70px;
+}
+
 .sidebar-header {
     padding: 20px;
     background: var(--dark-bg);
@@ -136,6 +173,14 @@ body {
     float: right;
     margin-top: 6px;
 }
+/* Dez */
+body.light-theme .navbar-light .navbar-nav .nav-link {
+    color: var(--text-dark);
+}
+body.dark-theme .navbar-light .navbar-nav .nav-link,  body.dark-theme #manage-tab{
+    color: var(--text-light);
+}
+/* Dez */
 
 /* Main Content Area */
 /* Dez */
@@ -387,6 +432,18 @@ body.dark-theme #content {
     font-weight: 600;
     color: var(--secondary-color);
 }
+/* Dez */
+
+body.light-theme .card-header h5 {
+    color: var(--secondary-color);
+}
+body.dark-theme .card-header h5 {
+    color: var(--text-light);
+}
+body.dark-theme .list-group-flush>.list-group-item {
+    background-color: var(--dark-bg);
+}
+/* Dez */
 
 .card-header h5 .bi {
     margin-right: 8px;
@@ -501,6 +558,14 @@ select.form-control {
     display: inline-block;
     width: 10px;
     height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: pulse 2s infinite;
+}
+.status-indicator-without_width {
+    display: inline-block;
+    width: auto;
+    height: auto;
     border-radius: 50%;
     margin-right: 5px;
     animation: pulse 2s infinite;

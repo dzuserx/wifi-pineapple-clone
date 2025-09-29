@@ -49,6 +49,102 @@ const API = {
     async getDashboardData() {
         return this.request('/mock/dashboard.json');
     },
+
+    // Campaigns endpoints
+    async getCampaignsData() {
+        return this.request('/mock/campaigns.json');
+    },
+
+    async createCampaign(campaignData) {
+        return this.request('/campaigns/create', {
+            method: 'POST',
+            body: JSON.stringify(campaignData)
+        });
+    },
+
+    async updateCampaign(campaignId, campaignData) {
+        return this.request(`/campaigns/${campaignId}`, {
+            method: 'PUT',
+            body: JSON.stringify(campaignData)
+        });
+    },
+
+    async deleteCampaign(campaignId) {
+        return this.request(`/campaigns/${campaignId}`, {
+            method: 'DELETE'
+        });
+    },
+
+    async toggleCampaign(campaignId, action) {
+        return this.request(`/campaigns/${campaignId}/toggle`, {
+            method: 'POST',
+            body: JSON.stringify({ action })
+        });
+    },
+
+    // Cloud C2 endpoints
+    async getCloudC2Data() {
+        return this.request('/mock/cloud-c2.json');
+    },
+
+    async connectToCloudC2(connectionData) {
+        return this.request('/cloud-c2/connect', {
+            method: 'POST',
+            body: JSON.stringify(connectionData)
+        });
+    },
+
+    async disconnectFromCloudC2() {
+        return this.request('/cloud-c2/disconnect', {
+            method: 'POST'
+        });
+    },
+
+    async syncCloudData() {
+        return this.request('/cloud-c2/sync', {
+            method: 'POST'
+        });
+    },
+
+    // Settings endpoints
+    async getSettingsData() {
+        return this.request('/mock/settings.json');
+    },
+
+    async updateGeneralSettings(settings) {
+        return this.request('/settings/general', {
+            method: 'PUT',
+            body: JSON.stringify(settings)
+        });
+    },
+
+    async updateNetworkingSettings(settings) {
+        return this.request('/settings/networking', {
+            method: 'PUT',
+            body: JSON.stringify(settings)
+        });
+    },
+
+    async updateWifiSettings(settings) {
+        return this.request('/settings/wifi', {
+            method: 'PUT',
+            body: JSON.stringify(settings)
+        });
+    },
+
+    async updateLedSettings(settings) {
+        return this.request('/settings/leds', {
+            method: 'PUT',
+            body: JSON.stringify(settings)
+        });
+    },
+
+    async updateAdvancedSettings(settings) {
+        return this.request('/settings/advanced', {
+            method: 'PUT',
+            body: JSON.stringify(settings)
+        });
+    },
     
     // Recon endpoints
     async getReconData() {

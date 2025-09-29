@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+            </nav>
+        </div>
+    </div>
+
+    <!-- Campaign Stats -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+
+    <!-- Main Tabs -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="campaignTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="manage-tab" data-toggle="tab" href="#manage" role="tab">
+                        <i class="bi bi-list-ul"></i> Manage
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="modes-tab" data-toggle="tab" href="#modes" role="tab">
+                        <i class="bi bi-sliders"></i> Campaign Modes
+                    </a>
+                </li>

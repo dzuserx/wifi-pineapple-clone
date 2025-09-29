@@ -1,0 +1,91 @@
+{
+    "status": {
+        "state": "disconnected",
+        "server": "cloudc2.hak5.org",
+        "lastConnected": "2024-01-19T10:30:00Z"
+    },
+    "stats": {
+        "dataUploaded": "0 MB",
+        "uptime": "0h 0m",
+        "totalSessions": 0,
+        "lastSync": null
+    },
+    "device": {
+        "id": "WP-ABC123",
+        "name": "WiFi Pineapple",
+        "firmware": "v2.7.0",
+        "hardware": "Mark VII",
+        "ipAddress": "192.168.1.100",
+        "macAddress": "00:11:22:33:44:55"
+    },
+    "features": [
+        "remote_access",
+        "secure_communication",
+        "real_time_monitoring",
+        "automatic_backups",
+        "remote_firmware_updates",
+        "command_execution",
+        "automated_collection",
+        "log_synchronization"
+    ],
+    "logs": [
+        {
+            "type": "info",
+            "message": "Waiting for connection...",
+            "timestamp": "2024-01-20T12:00:00Z"
+        }
+    ],
+    "syncItems": [
+        {
+            "type": "logs",
+            "name": "Campaign logs and system events",
+            "lastSync": null,
+            "status": "pending"
+        },
+        {
+            "type": "campaigns",
+            "name": "Campaign configurations and results",
+            "lastSync": null,
+            "status": "pending"
+        },
+        {
+            "type": "settings",
+            "name": "Device configuration backups",
+            "lastSync": null,
+            "status": "pending"
+        },
+        {
+            "type": "analytics",
+            "name": "Performance metrics and statistics",
+            "lastSync": null,
+            "status": "pending"
+        }
+    ],
+    "connection": {
+        "autoConnect": false,
+        "encryption": true,
+        "serverUrl": "cloudc2.hak5.org",
+        "apiKey": null,
+        "deviceName": "WiFi Pineapple"
+    },
+    "disconnectOptions": [
+        {
+            "id": "graceful-disconnect",
+            "name": "Graceful Disconnect",
+            "description": "Sync all pending data before disconnecting",
+            "selected": true
+        },
+        {
+            "id": "immediate-disconnect",
+            "name": "Immediate Disconnect",
+            "description": "Disconnect immediately without syncing",
+            "selected": false
+        },
+        {
+            "id": "emergency-disconnect",
+            "name": "Emergency Disconnect",
+            "description": "Force disconnect and clear local cache",
+            "selected": false
+        }
+    ]
+}

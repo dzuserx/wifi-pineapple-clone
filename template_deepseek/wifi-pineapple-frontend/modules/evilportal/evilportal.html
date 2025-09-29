@@ -1,0 +1,434 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="module-title">Evil Portal</h1>
+            <p class="module-description">Create captive portals for credential harvesting and client engagement with customizable templates.</p>
+        </div>
+    </div>
+
+    <!-- Main Sections -->
+    <div class="row">
+        <div class="col-12">
+            <!-- Scanning Section -->
+            <div class="section-header mb-4">
+                <h2><i class="bi bi-search"></i> Scanning</h2>
+                <hr>
+            </div>
+                    <!-- Section 1: Evil Portal Activation -->
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-play-circle"></i> Evil Portal Activation</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="btn btn-success" id="start-portal">
+                                            <i class="bi bi-play"></i> Start Portal
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="start-webserver">
+                                            <i class="bi bi-server"></i> Start Web Server
+                                        </button>
+                                        <button type="button" class="btn btn-warning" id="enable-boot">
+                                            <i class="bi bi-bootstrap"></i> Enable on Boot
+                                        </button>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="status-indicator">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <i class="bi bi-circle-fill text-success me-2"></i>
+                                                <span>Portal Active</span>
+                                            </div>
+                                            <div class="d-flex align-items-center mb-2">
+                                                <i class="bi bi-circle-fill text-info me-2"></i>
+                                                <span>Web Server Running</span>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-circle-fill text-warning me-2"></i>
+                                                <span>Boot Enabled</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-person-check"></i> Permanent Clients</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <small>Clients that have successfully authenticated will be added to the permanent clients list.</small>
+                                    </div>
+                                    <div class="permanent-clients-list">
+                                        <div class="client-item d-flex justify-content-between align-items-center mb-2">
+                                            <span><code>AA:BB:CC:DD:EE:FF</code></span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removePermanentClient('AA:BB:CC:DD:EE:FF')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="client-item d-flex justify-content-between align-items-center mb-2">
+                                            <span><code>11:22:33:44:55:66</code></span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removePermanentClient('11:22:33:44:55:66')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-warning mt-3" id="clear-permanent-clients">
+                                        <i class="bi bi-trash"></i> Clear All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-shield-check"></i> Allowed Clients</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <small>Only clients in this list will be allowed to access the portal.</small>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Add Client MAC</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="new-allowed-client" placeholder="AA:BB:CC:DD:EE:FF">
+                                            <button class="btn btn-primary" type="button" id="add-allowed-client">
+                                                <i class="bi bi-plus"></i> Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="allowed-clients-list">
+                                        <div class="client-item d-flex justify-content-between align-items-center mb-2">
+                                            <span><code>AA:BB:CC:DD:EE:FF</code></span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removeAllowedClient('AA:BB:CC:DD:EE:FF')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="client-item d-flex justify-content-between align-items-center mb-2">
+                                            <span><code>11:22:33:44:55:66</code></span>
+                                            <button class="btn btn-sm btn-outline-danger" onclick="removeAllowedClient('11:22:33:44:55:66')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-warning mt-3" id="clear-allowed-clients">
+                                        <i class="bi bi-trash"></i> Clear All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Portal Templates -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-palette"></i> Portal Templates</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-wifi fa-2x text-primary mb-2"></i>
+                                                    <h6>Basic Login</h6>
+                                                    <p class="small text-muted">Simple username/password form</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="selectTemplate('basic-login')">
+                                                        <i class="bi bi-check"></i> Select
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-building fa-2x text-success mb-2"></i>
+                                                    <h6>Corporate</h6>
+                                                    <p class="small text-muted">Corporate login portal</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="selectTemplate('corporate')">
+                                                        <i class="bi bi-check"></i> Select
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-house fa-2x text-warning mb-2"></i>
+                                                    <h6>Hotel WiFi</h6>
+                                                    <p class="small text-muted">Hotel guest access portal</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="selectTemplate('hotel')">
+                                                        <i class="bi bi-check"></i> Select
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-airplane fa-2x text-info mb-2"></i>
+                                                    <h6>Airport</h6>
+                                                    <p class="small text-muted">Airport WiFi portal</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="selectTemplate('airport')">
+                                                        <i class="bi bi-check"></i> Select
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-cup-straw fa-2x text-danger mb-2"></i>
+                                                    <h6>Cafe</h6>
+                                                    <p class="small text-muted">Coffee shop WiFi portal</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="selectTemplate('cafe')">
+                                                        <i class="bi bi-check"></i> Select
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-bank fa-2x text-secondary mb-2"></i>
+                                                    <h6>Bank</h6>
+                                                    <p class="small text-muted">Banking WiFi portal</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="selectTemplate('bank')">
+                                                        <i class="bi bi-check"></i> Select
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card template-card">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-upload fa-2x text-dark mb-2"></i>
+                                                    <h6>Custom</h6>
+                                                    <p class="small text-muted">Upload your own template</p>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="uploadTemplate()">
+                                                        <i class="bi bi-upload"></i> Upload
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Portals Section -->
+            <div class="section-header mb-4">
+                <h2><i class="bi bi-box-arrow-in-right"></i> Portals</h2>
+                <hr>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="bi bi-list"></i> Active Portals</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Portal Name</th>
+                                            <th>Template</th>
+                                            <th>Status</th>
+                                            <th>Clients</th>
+                                            <th>Credentials</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="active-portals-table">
+                                        <tr>
+                                            <td>Free WiFi</td>
+                                            <td>Basic Login</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>5</td>
+                                            <td>3</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-info" onclick="viewPortal('free-wifi')">
+                                                    <i class="bi bi-eye"></i> View
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" onclick="stopPortal('free-wifi')">
+                                                    <i class="bi bi-stop"></i> Stop
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Corporate Guest</td>
+                                            <td>Corporate</td>
+                                            <td><span class="badge bg-secondary">Inactive</span></td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-info" onclick="viewPortal('corporate-guest')">
+                                                    <i class="bi bi-eye"></i> View
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-success" onclick="startPortal('corporate-guest')">
+                                                    <i class="bi bi-play"></i> Start
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="bi bi-key"></i> Captured Credentials</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Portal</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Client MAC</th>
+                                            <th>Captured At</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="credentials-table">
+                                        <tr>
+                                            <td>Free WiFi</td>
+                                            <td>john.doe</td>
+                                            <td>password123</td>
+                                            <td><code>AA:BB:CC:DD:EE:FF</code></td>
+                                            <td>2024-01-15 10:30:00</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" onclick="downloadCredential(1)">
+                                                    <i class="bi bi-download"></i> Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Free WiFi</td>
+                                            <td>jane.smith</td>
+                                            <td>letmein</td>
+                                            <td><code>11:22:33:44:55:66</code></td>
+                                            <td>2024-01-15 10:25:00</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" onclick="downloadCredential(2)">
+                                                    <i class="bi bi-download"></i> Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Free WiFi</td>
+                                            <td>guest</td>
+                                            <td>guest</td>
+                                            <td><code>77:88:99:AA:BB:CC</code></td>
+                                            <td>2024-01-15 10:20:00</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" onclick="downloadCredential(3)">
+                                                    <i class="bi bi-download"></i> Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.template-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #e9ecef;
+}
+
+.template-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.status-indicator .d-flex {
+    font-size: 0.9em;
+}
+</style>
+
+<script>
+// Basic Evil Portal functionality
+$(document).ready(function() {
+    $('#start-portal').on('click', function() {
+        Helpers.showNotification('Evil Portal started successfully', 'success');
+    });
+
+    $('#start-webserver').on('click', function() {
+        Helpers.showNotification('Web server started successfully', 'success');
+    });
+
+    $('#enable-boot').on('click', function() {
+        Helpers.showNotification('Evil Portal enabled on boot', 'success');
+    });
+
+    $('#add-allowed-client').on('click', function() {
+        const mac = $('#new-allowed-client').val();
+        if (mac) {
+            Helpers.showNotification(`Client ${mac} added to allowed list`, 'success');
+            $('#new-allowed-client').val('');
+        }
+    });
+
+    $('#clear-permanent-clients, #clear-allowed-clients').on('click', function() {
+        Helpers.showNotification('Client list cleared', 'warning');
+    });
+});
+
+// Template selection functions
+function selectTemplate(template) {
+    Helpers.showNotification(`Template "${template}" selected`, 'success');
+}
+
+function uploadTemplate() {
+    Helpers.showNotification('Template upload feature coming soon', 'info');
+}
+
+// Portal management functions
+function viewPortal(portalId) {
+    Helpers.showNotification(`Viewing portal: ${portalId}`, 'info');
+}
+
+function startPortal(portalId) {
+    Helpers.showNotification(`Starting portal: ${portalId}`, 'success');
+}
+
+function stopPortal(portalId) {
+    Helpers.showNotification(`Stopping portal: ${portalId}`, 'warning');
+}
+
+// Client management functions
+function removePermanentClient(mac) {
+    Helpers.showNotification(`Removed permanent client: ${mac}`, 'warning');
+}
+
+function removeAllowedClient(mac) {
+    Helpers.showNotification(`Removed allowed client: ${mac}`, 'warning');
+}
+
+// Credential functions
+function downloadCredential(id) {
+    Helpers.showNotification(`Downloading credential ${id}`, 'success');
+}
+</script>

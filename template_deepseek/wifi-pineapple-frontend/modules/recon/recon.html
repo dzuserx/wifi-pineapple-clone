@@ -1,68 +1,311 @@
 <div class="container-fluid fade-in">
+    <!-- Navigation Tabs -->
     <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5><i class="bi bi-binoculars"></i> Network Scanning</h5>
-                    <div>
-                        <button class="btn btn-primary btn-sm mr-2" id="start-scan">
-                            <i class="bi bi-play"></i> Start Scan
-                        </button>
-                        <button class="btn btn-secondary btn-sm" id="stop-scan" disabled>
-                            <i class="bi bi-stop"></i> Stop Scan
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i> 
-                        Network discovery and client monitoring tools for wireless penetration testing.
-                    </div>
-                    
-                    <div class="progress mb-3" style="height: 10px; display: none;" id="scan-progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
-                    </div>
-                    
-                    <div id="scan-results">
-                        <p class="text-muted">Click "Start Scan" to begin network discovery.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5><i class="bi bi-gear"></i> Scan Settings</h5>
-                </div>
-                <div class="card-body">
-                    <form id="scan-settings">
-                        <div class="form-group">
-                            <label>Scan Type</label>
-                            <select class="form-control" id="scan-type">
-                                <option value="active">Active Scan</option>
-                                <option value="passive">Passive Scan</option>
-                                <option value="stealth">Stealth Scan</option>
-                            </select>
+        <div class="col-12">
+            <ul class="nav nav-tabs" id="recon-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="scanning-tab" data-toggle="tab" href="#scanning" role="tab">
+                        <i class="bi bi-binoculars"></i> Scanning
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="handshakes-tab" data-toggle="tab" href="#handshakes" role="tab">
+                        <i class="bi bi-key"></i> Handshakes
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content mt-4" id="recon-tab-content">
+                <!-- Scanning Tab -->
+                <div class="tab-pane fade show active" id="scanning" role="tabpanel" aria-labelledby="scanning-tab">
+                    <!-- Section 1: Quick Reports -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="bi bi-graph-up"></i> Wireless Landscape</h6>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="wireless-landscape-chart" width="300" height="150"></canvas>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Target Channel</label>
-                            <select class="form-control" id="scan-channel">
-                                <option value="all">All Channels</option>
-                                <option value="1">Channel 1 (2.412 GHz)</option>
-                                <option value="6">Channel 6 (2.437 GHz)</option>
-                                <option value="11">Channel 11 (2.462 GHz)</option>
-                            </select>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="bi bi-bar-chart"></i> Channel Distribution</h6>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="channel-distribution-chart" width="300" height="150"></canvas>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Duration (seconds)</label>
-                            <input type="number" class="form-control" id="scan-duration" value="30" min="10" max="300">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="bi bi-key"></i> Handshakes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="text-success">12</h4>
+                                        <p class="text-muted">Captured</p>
+                                        <h4 class="text-warning">3</h4>
+                                        <p class="text-muted">Pending</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-success btn-block" id="save-settings">
-                            <i class="bi bi-save"></i> Save Settings
-                        </button>
-                    </form>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6><i class="bi bi-clock-history"></i> Previous Scans</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h4 class="text-info">8</h4>
+                                        <p class="text-muted">Total Scans</p>
+                                        <h4 class="text-success">5</h4>
+                                        <p class="text-muted">Completed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Scan Settings -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-gear"></i> Scan Settings</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Scan Type</label>
+                                            <select class="form-control" id="scan-type">
+                                                <option value="active">Active Scan</option>
+                                                <option value="passive">Passive Scan</option>
+                                                <option value="stealth">Stealth Scan</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Channels</label>
+                                            <select class="form-control" id="scan-channel">
+                                                <option value="all">All Channels</option>
+                                                <option value="1">Channel 1 (2.412 GHz)</option>
+                                                <option value="6">Channel 6 (2.437 GHz)</option>
+                                                <option value="11">Channel 11 (2.462 GHz)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Duration</label>
+                                            <input type="number" class="form-control" id="scan-duration" value="30" min="10" max="300">
+                                        </div>
+                                        <div class="col-md-3 d-flex align-items-end">
+                                            <button type="button" class="btn btn-success w-100" id="save-settings">
+                                                <i class="bi bi-save"></i> Save Settings
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Scanned Stations -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-router"></i> Scanned Stations</h5>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Sub-tabs for Access Points and Connected Clients -->
+                                    <ul class="nav nav-pills mb-3" id="stations-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="aps-tab" data-toggle="pill" href="#access-points" role="tab">
+                                                <i class="bi bi-router"></i> Access Points
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="clients-tab" data-toggle="pill" href="#connected-clients" role="tab">
+                                                <i class="bi bi-people"></i> Connected Clients
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="stations-tab-content">
+                                        <!-- Access Points Sub-tab -->
+                                        <div class="tab-pane fade show active" id="access-points" role="tabpanel" aria-labelledby="aps-tab">
+                                            <div class="input-group mb-3" style="width: 300px;">
+                                                <input type="text" class="form-control" placeholder="Search access points..." id="ap-search">
+                                                <button class="btn btn-outline-secondary" type="button" id="clear-search">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-hover" id="access-points-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>SSID</th>
+                                                            <th>BSSID</th>
+                                                            <th>Channel</th>
+                                                            <th>Signal</th>
+                                                            <th>Encryption</th>
+                                                            <th>Clients</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="access-points-body">
+                                                        <!-- Data will be populated by JavaScript -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- Connected Clients Sub-tab -->
+                                        <div class="tab-pane fade" id="connected-clients" role="tabpanel" aria-labelledby="clients-tab">
+                                            <div class="input-group mb-3" style="width: 300px;">
+                                                <input type="text" class="form-control" placeholder="Search clients..." id="client-search">
+                                                <button class="btn btn-outline-secondary" type="button" id="clear-client-search">
+                                                    <i class="bi bi-x"></i>
+                                                </button>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-hover" id="clients-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>MAC Address</th>
+                                                            <th>Vendor</th>
+                                                            <th>Packets</th>
+                                                            <th>Signal</th>
+                                                            <th>Connected To</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="clients-body">
+                                                        <!-- Data will be populated by JavaScript -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Handshakes Tab -->
+                <div class="tab-pane fade" id="handshakes" role="tabpanel" aria-labelledby="handshakes-tab">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-key"></i> Automatic Capture</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="auto-capture" checked>
+                                        <label class="form-check-label" for="auto-capture">
+                                            Enable automatic handshake capture during scans
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-cursor"></i> Direct Capture</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Select Access Point</label>
+                                            <select class="form-control" id="direct-ap">
+                                                <option value="">Choose AP...</option>
+                                                <option value="00:11:22:33:44:55">HomeWiFi (00:11:22:33:44:55)</option>
+                                                <option value="AA:BB:CC:DD:EE:FF">Office_Network (AA:BB:CC:DD:EE:FF)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Select Client (optional)</label>
+                                            <select class="form-control" id="direct-client">
+                                                <option value="">Any client</option>
+                                                <option value="11:22:33:44:55:66">Client 1 (11:22:33:44:55:66)</option>
+                                                <option value="77:88:99:AA:BB:CC">Client 2 (77:88:99:AA:BB:CC)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary mt-3" id="start-direct-capture">
+                                        <i class="bi bi-play"></i> Start Direct Capture
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-key"></i> Captured Handshakes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>SSID</th>
+                                                    <th>BSSID</th>
+                                                    <th>Format</th>
+                                                    <th>Source</th>
+                                                    <th>Status</th>
+                                                    <th>Captured At</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="handshakes-body">
+                                                <tr>
+                                                    <td>HomeWiFi</td>
+                                                    <td><code>00:11:22:33:44:55</code></td>
+                                                    <td>22000</td>
+                                                    <td>Recon</td>
+                                                    <td><span class="badge bg-success">Complete</span></td>
+                                                    <td>2024-01-15 10:30:00</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">
+                                                            <i class="bi bi-download"></i> Download
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Office_Network</td>
+                                                    <td><code>AA:BB:CC:DD:EE:FF</code></td>
+                                                    <td>PCAP</td>
+                                                    <td>Evil WPA</td>
+                                                    <td><span class="badge bg-warning">Partial</span></td>
+                                                    <td>2024-01-15 09:45:00</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">
+                                                            <i class="bi bi-download"></i> Download
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </div>

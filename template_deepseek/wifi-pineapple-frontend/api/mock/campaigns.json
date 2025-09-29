@@ -1,0 +1,103 @@
+{
+    "stats": {
+        "total": 5,
+        "active": 2,
+        "paused": 1,
+        "results": 124
+    },
+    "campaigns": [
+        {
+            "id": 1,
+            "name": "SSID Harvesting Campaign",
+            "status": "active",
+            "mode": "Automated",
+            "results": 45,
+            "description": "Automatically captures SSID information from nearby networks",
+            "created": "2024-01-15T10:30:00Z",
+            "lastRun": "2024-01-20T14:22:00Z"
+        },
+        {
+            "id": 2,
+            "name": "Client Deauth Attack",
+            "status": "paused",
+            "mode": "Manual",
+            "results": 12,
+            "description": "Deauthenticates clients from target networks",
+            "created": "2024-01-10T09:15:00Z",
+            "lastRun": "2024-01-18T16:45:00Z"
+        },
+        {
+            "id": 3,
+            "name": "Beacon Flooding Test",
+            "status": "completed",
+            "mode": "Automated",
+            "results": 67,
+            "description": "Floods area with fake beacon frames",
+            "created": "2024-01-05T11:20:00Z",
+            "lastRun": "2024-01-19T13:10:00Z"
+        },
+        {
+            "id": 4,
+            "name": "Probe Response Capture",
+            "status": "active",
+            "mode": "Automated",
+            "results": 23,
+            "description": "Captures probe responses from client devices",
+            "created": "2024-01-12T08:45:00Z",
+            "lastRun": "2024-01-20T12:30:00Z"
+        },
+        {
+            "id": 5,
+            "name": "Evil Twin Setup",
+            "status": "stopped",
+            "mode": "Manual",
+            "results": 8,
+            "description": "Creates evil twin access points",
+            "created": "2024-01-08T14:00:00Z",
+            "lastRun": "2024-01-17T10:15:00Z"
+        }
+    ],
+    "modes": [
+        {
+            "id": "automated",
+            "name": "Automated Mode",
+            "description": "Runs campaigns automatically based on predefined triggers and schedules."
+        },
+        {
+            "id": "manual",
+            "name": "Manual Mode",
+            "description": "User-controlled execution with real-time monitoring and adjustments."
+        },
+        {
+            "id": "advanced",
+            "name": "Advanced Mode",
+            "description": "Custom scripting and API integration for complex attack scenarios."
+        }
+    ],
+    "reports": [
+        {
+            "id": 1,
+            "name": "SSID Harvest Report",
+            "type": "summary",
+            "generated": "2024-01-20T15:30:00Z",
+            "size": "2.3MB"
+        },
+        {
+            "id": 2,
+            "name": "Client Activity Log",
+            "type": "detailed",
+            "generated": "2024-01-19T11:45:00Z",
+            "size": "5.1MB"
+        }
+    ],
+    "storage": {
+        "used": 75,
+        "total": 1600,
+        "unit": "MB"
+    },
+    "transmission": {
+        "autoUpload": false,
+        "frequency": "real-time",
+        "lastSync": "2024-01-20T14:00:00Z"
+    }
+}

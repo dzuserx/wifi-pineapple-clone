@@ -55,6 +55,62 @@
         </div>
     </div>
 
+    <!-- Additional Stats Row -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card stats-card bg-secondary text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 id="ssids-collected">47</h3>
+                            <p>SSIDs Collected</p>
+                        </div>
+                        <i class="bi bi-broadcast display-4 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card bg-danger text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 id="active-campaigns">2</h3>
+                            <p>Active Campaigns</p>
+                        </div>
+                        <i class="bi bi-flag display-4 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card bg-dark text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 id="handshakes">8</h3>
+                            <p>Handshakes</p>
+                        </div>
+                        <i class="bi bi-key display-4 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card bg-light text-dark">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 id="notifications-count">5</h3>
+                            <p>Notifications</p>
+                        </div>
+                        <i class="bi bi-bell display-4 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content Area -->
     <div class="row">
         <div class="col-md-8">
@@ -97,7 +153,7 @@
             </div>
 
             <!-- Recent Activity -->
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
                     <h5><i class="bi bi-clock-history"></i> Recent Activity</h5>
                 </div>
@@ -128,6 +184,83 @@
                             <div class="activity-content">
                                 <p>Network scanner module updated</p>
                                 <small class="text-muted">1 hour ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status Card -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="bi bi-cpu"></i> System Status</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="system-metric">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>CPU Usage</span>
+                                    <span id="cpu-usage">45%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" style="width: 45%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="system-metric">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>RAM Usage</span>
+                                    <span id="ram-usage">67%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" style="width: 67%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="system-metric">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>Disk Usage</span>
+                                    <span id="disk-usage">78%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" style="width: 78%"></div>
+                                </div>
+                                <small class="text-muted">2.3 GB of 3.0 GB used</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wireless Landscape Card -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="bi bi-bar-chart"></i> Wireless Landscape</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="wirelessLandscapeChart" width="400" height="200"></canvas>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h6>2.4 GHz</h6>
+                                <p class="text-muted">12 networks</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h6>5 GHz</h6>
+                                <p class="text-muted">8 networks</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <h6>Open Networks</h6>
+                                <p class="text-muted">3 networks</p>
                             </div>
                         </div>
                     </div>
@@ -168,7 +301,7 @@
             </div>
 
             <!-- Module Status -->
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
                     <h5><i class="bi bi-puzzle"></i> Active Modules</h5>
                 </div>
@@ -188,6 +321,114 @@
                             <i class="bi bi-search text-info"></i>
                             <span>Network Scanner</span>
                             <span class="badge badge-info">Scanning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connected Clients -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="bi bi-people"></i> Connected Clients</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>MAC</th>
+                                    <th>IP</th>
+                                    <th>Connected</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>AA:BB:CC:DD:EE:FF</code></td>
+                                    <td>192.168.1.101</td>
+                                    <td>2h 15m</td>
+                                    <td><button class="btn btn-sm btn-outline-danger">Kick</button></td>
+                                </tr>
+                                <tr>
+                                    <td><code>11:22:33:44:55:66</code></td>
+                                    <td>192.168.1.102</td>
+                                    <td>45m</td>
+                                    <td><button class="btn btn-sm btn-outline-danger">Kick</button></td>
+                                </tr>
+                                <tr>
+                                    <td><code>77:88:99:AA:BB:CC</code></td>
+                                    <td>192.168.1.103</td>
+                                    <td>12m</td>
+                                    <td><button class="btn btn-sm btn-outline-danger">Kick</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="bi bi-bell"></i> Notifications</h5>
+                </div>
+                <div class="card-body">
+                    <div class="notification-list">
+                        <div class="notification-item unread">
+                            <i class="bi bi-exclamation-triangle text-warning"></i>
+                            <div class="notification-content">
+                                <p>High CPU usage detected</p>
+                                <small class="text-muted">5 minutes ago</small>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <i class="bi bi-info-circle text-info"></i>
+                            <div class="notification-content">
+                                <p>New client connected</p>
+                                <small class="text-muted">15 minutes ago</small>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <i class="bi bi-shield-check text-success"></i>
+                            <div class="notification-content">
+                                <p>Security scan completed</p>
+                                <small class="text-muted">1 hour ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Campaigns -->
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-flag"></i> Active Campaigns</h5>
+                </div>
+                <div class="card-body">
+                    <div class="campaign-list">
+                        <div class="campaign-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6>SSID Harvesting</h6>
+                                    <small class="text-muted">Running for 2h 30m</small>
+                                </div>
+                                <span class="badge badge-success">Active</span>
+                            </div>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-success" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="campaign-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6>Client Monitoring</h6>
+                                    <small class="text-muted">Running for 1h 15m</small>
+                                </div>
+                                <span class="badge badge-warning">Paused</span>
+                            </div>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-warning" style="width: 45%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,456 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#dashboard" data-module="dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Settings</li>
+                </ol>
+            </nav>
+            <h1 class="module-title">Settings</h1>
+            <p class="module-description">System configuration, networking, WiFi settings, and advanced options.</p>
+        </div>
+    </div>
+
+    <!-- Settings Tabs -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="settingsTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab">
+                        <i class="bi bi-gear"></i> Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="networking-tab" data-toggle="tab" href="#networking" role="tab">
+                        <i class="bi bi-diagram-3"></i> Networking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="wifi-tab" data-toggle="tab" href="#wifi" role="tab">
+                        <i class="bi bi-wifi"></i> WiFi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="leds-tab" data-toggle="tab" href="#leds" role="tab">
+                        <i class="bi bi-lightbulb"></i> LEDs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab">
+                        <i class="bi bi-tools"></i> Advanced
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="help-tab" data-toggle="tab" href="#help" role="tab">
+                        <i class="bi bi-question-circle"></i> Help
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <div class="tab-content" id="settingsTabContent">
+                <!-- General Settings Tab -->
+                <div class="tab-pane fade show active" id="general" role="tabpanel">
+                    <h5>General Settings</h5>
+                    <form id="general-settings">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Device Name</label>
+                                    <input type="text" class="form-control" value="WiFi Pineapple" placeholder="Enter device name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Timezone</label>
+                                    <select class="form-control">
+                                        <option>UTC</option>
+                                        <option>America/New_York</option>
+                                        <option>Europe/London</option>
+                                        <option>Asia/Tokyo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Language</label>
+                                    <select class="form-control">
+                                        <option>English</option>
+                                        <option>Spanish</option>
+                                        <option>French</option>
+                                        <option>German</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Auto-start Services</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="autostart-pineap" checked>
+                                        <label class="form-check-label" for="autostart-pineap">
+                                            PineAP Service
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="autostart-web" checked>
+                                        <label class="form-check-label" for="autostart-web">
+                                            Web Interface
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="autostart-ssh">
+                                        <label class="form-check-label" for="autostart-ssh">
+                                            SSH Server
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Session Timeout (minutes)</label>
+                                    <input type="number" class="form-control" value="30" min="5" max="1440">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Settings</button>
+                    </form>
+                </div>
+
+                <!-- Networking Tab -->
+                <div class="tab-pane fade" id="networking" role="tabpanel">
+                    <h5>Networking Configuration</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Ethernet Interface</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>IP Address</label>
+                                        <input type="text" class="form-control" value="192.168.1.100" placeholder="192.168.1.100">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Subnet Mask</label>
+                                        <input type="text" class="form-control" value="255.255.255.0" placeholder="255.255.255.0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Gateway</label>
+                                        <input type="text" class="form-control" value="192.168.1.1" placeholder="192.168.1.1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>DNS Server</label>
+                                        <input type="text" class="form-control" value="8.8.8.8" placeholder="8.8.8.8">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Wireless Interface</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Mode</label>
+                                        <select class="form-control">
+                                            <option>Access Point</option>
+                                            <option>Client</option>
+                                            <option>Monitor</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Channel</label>
+                                        <select class="form-control">
+                                            <option>Auto</option>
+                                            <option>1 (2.412 GHz)</option>
+                                            <option>6 (2.437 GHz)</option>
+                                            <option>11 (2.462 GHz)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>TX Power</label>
+                                        <select class="form-control">
+                                            <option>Low</option>
+                                            <option>Medium</option>
+                                            <option>High</option>
+                                            <option>Maximum</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Apply Network Settings</button>
+                </div>
+
+                <!-- WiFi Tab -->
+                <div class="tab-pane fade" id="wifi" role="tabpanel">
+                    <h5>WiFi Configuration</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Access Point Settings</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>SSID</label>
+                                        <input type="text" class="form-control" value="Pineapple_XXXX" placeholder="Enter SSID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Security</label>
+                                        <select class="form-control">
+                                            <option>Open</option>
+                                            <option>WPA2</option>
+                                            <option>WPA3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Enter password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Channel</label>
+                                        <select class="form-control">
+                                            <option>Auto</option>
+                                            <option>1</option>
+                                            <option>6</option>
+                                            <option>11</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Advanced WiFi Settings</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Beacon Interval (ms)</label>
+                                        <input type="number" class="form-control" value="100" min="20" max="1000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>RTS Threshold</label>
+                                        <input type="number" class="form-control" value="2347" min="0" max="2347">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fragmentation Threshold</label>
+                                        <input type="number" class="form-control" value="2346" min="256" max="2346">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="short-preamble">
+                                        <label class="form-check-label" for="short-preamble">
+                                            Short Preamble
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Apply WiFi Settings</button>
+                </div>
+
+                <!-- LEDs Tab -->
+                <div class="tab-pane fade" id="leds" role="tabpanel">
+                    <h5>LED Configuration</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>LED Status Indicators</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Power LED</label>
+                                        <select class="form-control">
+                                            <option>Always On</option>
+                                            <option>Blink on Activity</option>
+                                            <option>Off</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>WiFi LED</label>
+                                        <select class="form-control">
+                                            <option>Show Signal Strength</option>
+                                            <option>Blink on Data</option>
+                                            <option>Off</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>USB LED</label>
+                                        <select class="form-control">
+                                            <option>On when Connected</option>
+                                            <option>Blink on Transfer</option>
+                                            <option>Off</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Custom LED Patterns</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Pattern Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter pattern name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>LED Sequence</label>
+                                        <textarea class="form-control" rows="3" placeholder="Describe LED sequence..."></textarea>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-sm">Save Pattern</button>
+                                    <button class="btn btn-outline-success btn-sm">Test Pattern</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Apply LED Settings</button>
+                </div>
+
+                <!-- Advanced Tab -->
+                <div class="tab-pane fade" id="advanced" role="tabpanel">
+                    <h5>Advanced Settings</h5>
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        These settings are for advanced users. Incorrect configuration may cause system instability.
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>System Tweaks</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>CPU Governor</label>
+                                        <select class="form-control">
+                                            <option>Performance</option>
+                                            <option>On-Demand</option>
+                                            <option>Conservative</option>
+                                            <option>Powersave</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Memory Management</label>
+                                        <select class="form-control">
+                                            <option>Default</option>
+                                            <option>Aggressive</option>
+                                            <option>Conservative</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enable-swap">
+                                        <label class="form-check-label" for="enable-swap">
+                                            Enable Swap File
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Debug Options</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="enable-debug">
+                                        <label class="form-check-label" for="enable-debug">
+                                            Enable Debug Logging
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="verbose-output">
+                                        <label class="form-check-label" for="verbose-output">
+                                            Verbose Console Output
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Log Level</label>
+                                        <select class="form-control">
+                                            <option>ERROR</option>
+                                            <option>WARN</option>
+                                            <option>INFO</option>
+                                            <option>DEBUG</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Apply Advanced Settings</button>
+                </div>
+
+                <!-- Help Tab -->
+                <div class="tab-pane fade" id="help" role="tabpanel">
+                    <h5>Help & Documentation</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Quick Start Guide</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-book"></i> Getting Started</a></li>
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-wifi"></i> WiFi Configuration</a></li>
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-shield"></i> Security Best Practices</a></li>
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-tools"></i> Troubleshooting</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Support Resources</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-globe"></i> Hak5 Forums</a></li>
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-youtube"></i> Video Tutorials</a></li>
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-file-earmark-pdf"></i> User Manual</a></li>
+                                        <li><a href="#" class="text-decoration-none"><i class="bi bi-headset"></i> Contact Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Settings form handling
+    $('#general-settings').on('submit', function(e) {
+        e.preventDefault();
+        Helpers.showNotification('General settings saved successfully', 'success');
+    });
+
+    // Add form validation and save handlers for other tabs
+    $('form').on('submit', function(e) {
+        e.preventDefault();
+        const formId = $(this).attr('id');
+        Helpers.showNotification(`${formId.replace('-', ' ')} saved successfully`, 'success');
+    });
+});
+</script>
+
+<style>
+.form-check {
+    margin-bottom: 0.5rem;
+}
+
+.card-header h6 {
+    margin-bottom: 0;
+}
+
+.alert-warning {
+    border-left: 4px solid #ffc107;
+}
+</style>

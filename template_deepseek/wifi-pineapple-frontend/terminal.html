@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Pineapple - Web Terminal</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/pineapple.css">
+    <link rel="icon" type="image/png" href="img/logos/pineapple-logo.png">
+    <style>
+        .terminal {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 10px;
+            height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .terminal-input {
+            background: #000;
+            color: #0f0;
+            border: none;
+            font-family: monospace;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h3>Web Terminal</h3>
+        <div class="terminal" id="terminal-output">WiFi Pineapple v2.7.0
+root@pineapple:~# </div>
+        <input type="text" class="terminal-input" id="terminal-input" placeholder="Enter command..." autofocus>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        const output = document.getElementById('terminal-output');
+        const input = document.getElementById('terminal-input');
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const cmd = input.value;
+                output.textContent += cmd + '\n';
+                // Mock responses
+                if (cmd === 'ls') {
+                    output.textContent += 'bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var\n';
+                } else if (cmd === 'pwd') {
+                    output.textContent += '/root\n';
+                } else if (cmd === 'whoami') {
+                    output.textContent += 'root\n';
+                } else {
+                    output.textContent += 'Command not found: ' + cmd + '\n';
+                }
+                output.textContent += 'root@pineapple:~# ';
+                input.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>

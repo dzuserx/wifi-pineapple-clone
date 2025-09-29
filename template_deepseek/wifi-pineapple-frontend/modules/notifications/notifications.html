@@ -1,0 +1,57 @@
+<div class="container-fluid fade-in">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-bell"></i> Notifications</h5>
+                </div>
+                <div class="card-body">
+                    <p>Notifications are a way for the system or modules to indicate a change in status or other message. They can have one of 5 notification levels: <strong>Info</strong>, <strong>Warning</strong>, <strong>Error</strong>, <strong>Success</strong> or <strong>Unknown</strong>. The messages are given a preview for a brief time in the title bar.</p>
+                    <p>Click on the notifications icon to view all messages.</p>
+
+                    <!-- Notification List -->
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Message</th>
+                                    <th>Timestamp</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="notifications-body">
+                                <!-- Notifications will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Notifications pagination">
+                        <ul class="pagination justify-content-center" id="notifications-pagination">
+                            <!-- Pagination will be populated by JavaScript -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Notification Details Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationModalLabel">Notification Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="notification-details">
+                <!-- Details will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

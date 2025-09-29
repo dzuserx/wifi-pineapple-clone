@@ -20,6 +20,10 @@
         <div class="sidebar-header">
             <img src="img/logos/hak5-logo.png" alt="Hak5" class="hak5-logo" onerror="this.style.display='none'">
             <h3>WiFi Pineapple</h3>
+            <small class="app-version">v2.7.0</small>
+            <button type="button" id="sidebarToggle" class="btn btn-sm btn-outline-light sidebar-toggle-btn" title="Toggle Sidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
         </div>
 
         <ul class="list-unstyled components">
@@ -82,6 +86,24 @@
                 </div>
             </li>
             <li>
+                <a href="#campaigns" data-module="campaigns" data-description="Campaign management for automated wireless attacks and data collection">
+                    <i class="bi bi-flag"></i>
+                    Campaigns
+                </a>
+            </li>
+            <li>
+                <a href="#settings" data-module="settings" data-description="System configuration, networking, WiFi settings, and advanced options">
+                    <i class="bi bi-gear"></i>
+                    Settings
+                </a>
+            </li>
+            <li>
+                <a href="#cloud-c2" data-module="cloud-c2" data-description="Cloud Command & Control for remote management and monitoring">
+                    <i class="bi bi-cloud"></i>
+                    Cloud C2
+                </a>
+            </li>
+            <li>
                 <a href="#reporting" data-module="reporting" data-description="Data analysis, report generation, and statistics">
                     <i class="bi bi-graph-up"></i>
                     Reporting
@@ -118,13 +140,29 @@
                 </button>
                 
                 <div class="navbar-nav ml-auto">
+                    <div class="nav-item">
+                        <a class="nav-link" href="#notifications" id="notifications-btn" title="Notifications" data-module="notifications" data-description="View system notifications and alerts">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge badge-danger notification-count" id="notification-count">3</span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#" id="info-btn" title="Informational Messages">
+                            <i class="bi bi-info-circle"></i>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#" id="terminal-btn" title="Web Terminal" onclick="openTerminal()">
+                            <i class="bi bi-terminal"></i>
+                        </a>
+                    </div>
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                             <i class="bi bi-person"></i> Admin
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a>
-                            <a class="dropdown-item" href="#"><i class="bi bi-power"></i> Logout</a>
+                            <a class="dropdown-item" href="#" onclick="logout()"><i class="bi bi-power"></i> Logout</a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +188,111 @@
                 <!-- Content will be loaded here dynamically -->
             </div>
         </div>
+
+        <!-- Expandable Terminal Panel -->
+        <div id="terminal-panel" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; height: 300px; background: #000; z-index: 1000; border-top: 1px solid #ccc;">
+            <div class="terminal-header" style="background: #333; color: #fff; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span><i class="bi bi-terminal"></i> Web Terminal</span>
+                <button onclick="openTerminal()" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 16px;">&times;</button>
+            </div>
+            <div id="terminal-output" style="height: calc(100% - 50px); overflow-y: auto; color: #0f0; padding: 10px; font-family: 'Courier New', monospace; background: #000; white-space: pre-wrap;">WiFi Pineapple v2.7.0
+root@pineapple:~# </div>
+            <input type="text" id="terminal-input" style="width: 100%; background: #000; color: #0f0; border: none; font-family: 'Courier New', monospace; padding: 10px; outline: none;" placeholder="Enter command..." autofocus>
+        </div>
     </div>
+
+    <!-- Authentication Check -->
+    <script>
+        // Check authentication on page load
+        if (localStorage.getItem('wifi-pineapple-auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+
+
+        // Toggle terminal panel
+        function openTerminal() {
+            const terminalPanel = document.getElementById('terminal-panel');
+            const isVisible = terminalPanel.style.display !== 'none';
+            terminalPanel.style.display = isVisible ? 'none' : 'block';
+            if (!isVisible) {
+                document.getElementById('terminal-input').focus();
+            }
+        }
+
+        // Sidebar toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const body = document.body;
+
+            // Check saved state
+            const isCollapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            if (isCollapsed) {
+                sidebar.classList.add('collapsed');
+                body.classList.add('sidebar-collapsed');
+            }
+
+            // Set initial icon for sidebar toggle
+            if (sidebarToggle) {
+                const icon = sidebarToggle.querySelector('i');
+                icon.className = isCollapsed ? 'bi bi-chevron-right' : 'bi bi-chevron-left';
+            }
+
+            // Top navbar toggle event
+            if (sidebarCollapse) {
+                sidebarCollapse.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                    body.classList.toggle('sidebar-collapsed');
+
+                    // Save state
+                    const collapsed = sidebar.classList.contains('collapsed');
+                    localStorage.setItem('sidebar-collapsed', collapsed);
+
+                    // Update icon
+                    if (sidebarToggle) {
+                        const icon = sidebarToggle.querySelector('i');
+                        icon.className = collapsed ? 'bi bi-chevron-right' : 'bi bi-chevron-left';
+                    }
+                });
+            }
+
+            // Sidebar internal toggle event
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('collapsed');
+                    body.classList.toggle('sidebar-collapsed');
+
+                    // Save state
+                    const collapsed = sidebar.classList.contains('collapsed');
+                    localStorage.setItem('sidebar-collapsed', collapsed);
+
+                    // Update icon
+                    const icon = sidebarToggle.querySelector('i');
+                        icon.className = collapsed ? 'bi bi-chevron-right' : 'bi bi-chevron-left';
+                });
+            }
+
+            // Prevent default anchor behavior for navigation links
+            const navLinks = document.querySelectorAll('a[data-module]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Only prevent default if it's a navigation link (not breadcrumb or other links)
+                    if (this.closest('.sidebar') || this.closest('.breadcrumb')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('wifi-pineapple-auth');
+            localStorage.removeItem('wifi-pineapple-user');
+            window.location.href = 'login.html';
+        }
+    </script>
 
     <!-- JavaScript Files -->
     <script src="js/jquery.min.js"></script>
