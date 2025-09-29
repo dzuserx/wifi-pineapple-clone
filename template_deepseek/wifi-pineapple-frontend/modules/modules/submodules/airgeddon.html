@@ -12,43 +12,63 @@
         </div>
     </div>
 
-    <div id="airgeddon-menu" class="card">
-        <div class="card-body">
-            <!-- Section 1: Preparation -->
-            <div class="menu-section mb-4">
-                <h5 class="section-title">────── Section 1: Preparation ──────────────────────────────────────────────</h5>
-                <div class="list-group">
-                    <button class="list-group-item list-group-item-action" data-menu="select-interface">├── 1. Select Interface</button>
-                    <button class="list-group-item list-group-item-action" data-menu="monitor-mode">├── 2. Put Interface in Monitor Mode</button>
-                    <button class="list-group-item list-group-item-action" data-menu="managed-mode">└── 3. Put Interface in Managed Mode</button>
+    <div id="airgeddon-menu">
+        <!-- Section 1: Preparation -->
+        <div class="menu-section-card mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="section-title mb-0">────── Section 1: Preparation ──────────────────────────────────────────────</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <button class="list-group-item list-group-item-action" data-menu="select-interface">├── 1. Select Interface</button>
+                        <button class="list-group-item list-group-item-action" data-menu="monitor-mode">├── 2. Put Interface in Monitor Mode</button>
+                        <button class="list-group-item list-group-item-action" data-menu="managed-mode">└── 3. Put Interface in Managed Mode</button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Section 2: Network discovery -->
-            <div class="menu-section mb-4">
-                <h5 class="section-title">────── Section 2: Network discovery ────────────────────────────────────────</h5>
-                <div class="list-group">
-                    <button class="list-group-item list-group-item-action" data-menu="explore-targets">└── 4. Explore for targets</button>
+        <!-- Section 2: Network discovery -->
+        <div class="menu-section-card mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="section-title mb-0">────── Section 2: Network discovery ────────────────────────────────────────</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <button class="list-group-item list-group-item-action" data-menu="explore-targets">└── 4. Explore for targets</button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Section 3: Attack selection -->
-            <div class="menu-section mb-4">
-                <h5 class="section-title">────── Section 3: Attack selection ─────────────────────────────────────────</h5>
-                <div class="list-group">
-                    <button class="list-group-item list-group-item-action" data-menu="dos-attacks">├── 5. DOS Attacks Menu</button>
-                    <button class="list-group-item list-group-item-action" data-menu="handshake-tools">├── 6. Handshake Tools Menu</button>
-                    <button class="list-group-item list-group-item-action" data-menu="offline-wpa">├── 7. Offline WPA/WPA2 decrypt Menu</button>
-                    <button class="list-group-item list-group-item-action" data-menu="wps-attacks">├── 8. WPS Attacks Menu</button>
-                    <button class="list-group-item list-group-item-action" data-menu="evil-twin">├── 9. Evil Twin Attacks Menu</button>
-                    <button class="list-group-item list-group-item-action" data-menu="wep-attacks">└── 10. WEP Attacks Menu</button>
+        <!-- Section 3: Attack selection -->
+        <div class="menu-section-card mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="section-title mb-0">────── Section 3: Attack selection ─────────────────────────────────────────</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <button class="list-group-item list-group-item-action" data-menu="dos-attacks">├── 5. DOS Attacks Menu</button>
+                        <button class="list-group-item list-group-item-action" data-menu="handshake-tools">├── 6. Handshake Tools Menu</button>
+                        <button class="list-group-item list-group-item-action" data-menu="offline-wpa">├── 7. Offline WPA/WPA2 decrypt Menu</button>
+                        <button class="list-group-item list-group-item-action" data-menu="wps-attacks">├── 8. WPS Attacks Menu</button>
+                        <button class="list-group-item list-group-item-action" data-menu="evil-twin">├── 9. Evil Twin Attacks Menu</button>
+                        <button class="list-group-item list-group-item-action" data-menu="wep-attacks">└── 10. WEP Attacks Menu</button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Exit -->
-            <div class="menu-section">
-                <div class="list-group">
-                    <button class="list-group-item list-group-item-action" data-menu="exit">└── 11. Exit</button>
+        <!-- Exit -->
+        <div class="menu-section-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="list-group">
+                        <button class="list-group-item list-group-item-action" data-menu="exit">└── 11. Exit</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +122,7 @@
     box-shadow: 0 2px 8px rgba(13, 110, 253, 0.1);
 }
 
-.menu-section .list-group {
+.card-body .list-group {
     border: 1px solid #0d6efd;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.8);
@@ -119,6 +139,43 @@
     background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
     color: #856404;
     transform: translateX(10px);
+}
+
+/* Slide animations */
+.slide-left-out {
+    animation: slideLeftOut 0.5s ease-in-out forwards;
+}
+
+.slide-right-in {
+    animation: slideRightIn 0.5s ease-in-out forwards;
+}
+
+.slide-right-out {
+    animation: slideRightOut 0.5s ease-in-out forwards;
+}
+
+.slide-left-in {
+    animation: slideLeftIn 0.5s ease-in-out forwards;
+}
+
+@keyframes slideLeftOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes slideRightIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRightOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes slideLeftIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 /* Dark mode overrides */
@@ -148,7 +205,7 @@
         color: #66b2ff;
     }
 
-    .menu-section .list-group {
+    .card-body .list-group {
         border-color: #66b2ff;
         background: rgba(42, 42, 42, 0.8);
     }
