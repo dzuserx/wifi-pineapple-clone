@@ -562,6 +562,7 @@ select.form-control {
     margin-right: 5px;
     animation: pulse 2s infinite;
 }
+/* Dez */
 .status-indicator-without_width {
     display: inline-block;
     width: auto;
@@ -570,6 +571,7 @@ select.form-control {
     margin-right: 5px;
     animation: pulse 2s infinite;
 }
+/* Dez */
 
 .status-indicator.online {
     background-color: var(--success-color);

@@ -10,11 +10,15 @@ A fully functional web frontend for WiFi Pineapple penetration testing platform.
 - Mock API integration
 - Professional UI matching Hak5 design
 
+## Folder structure
+
+
+
 ## Installation
 
 1. Extract all files to a web server directory
 2. Serve via web server:
-   cd E:\PC_X\Documents\Codes\python_env  
+   cd E:\PC_X\Documents\Codes\python_env
    venv\Scripts\activate
    cd E:\PC_X\Documents\Codes\Hacks\wifi-pineapple-cloner-frontend\template_deepseek\wifi-pineapple-frontend
 
