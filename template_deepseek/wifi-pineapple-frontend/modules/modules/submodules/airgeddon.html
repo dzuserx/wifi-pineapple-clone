@@ -1,0 +1,165 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#modules" data-module="modules">Modules</a></li>
+                    <li class="breadcrumb-item active">Airgeddon</li>
+                </ol>
+            </nav>
+            <h1 class="module-title">AIRGEDDN MAIN MENU</h1>
+            <p class="module-description">Wireless auditing tool with multiple attack flows and network discovery options.</p>
+        </div>
+    </div>
+
+    <div id="airgeddon-menu" class="card">
+        <div class="card-body">
+            <!-- Section 1: Preparation -->
+            <div class="menu-section mb-4">
+                <h5 class="section-title">────── Section 1: Preparation ──────────────────────────────────────────────</h5>
+                <div class="list-group">
+                    <button class="list-group-item list-group-item-action" data-menu="select-interface">├── 1. Select Interface</button>
+                    <button class="list-group-item list-group-item-action" data-menu="monitor-mode">├── 2. Put Interface in Monitor Mode</button>
+                    <button class="list-group-item list-group-item-action" data-menu="managed-mode">└── 3. Put Interface in Managed Mode</button>
+                </div>
+            </div>
+
+            <!-- Section 2: Network discovery -->
+            <div class="menu-section mb-4">
+                <h5 class="section-title">────── Section 2: Network discovery ────────────────────────────────────────</h5>
+                <div class="list-group">
+                    <button class="list-group-item list-group-item-action" data-menu="explore-targets">└── 4. Explore for targets</button>
+                </div>
+            </div>
+
+            <!-- Section 3: Attack selection -->
+            <div class="menu-section mb-4">
+                <h5 class="section-title">────── Section 3: Attack selection ─────────────────────────────────────────</h5>
+                <div class="list-group">
+                    <button class="list-group-item list-group-item-action" data-menu="dos-attacks">├── 5. DOS Attacks Menu</button>
+                    <button class="list-group-item list-group-item-action" data-menu="handshake-tools">├── 6. Handshake Tools Menu</button>
+                    <button class="list-group-item list-group-item-action" data-menu="offline-wpa">├── 7. Offline WPA/WPA2 decrypt Menu</button>
+                    <button class="list-group-item list-group-item-action" data-menu="wps-attacks">├── 8. WPS Attacks Menu</button>
+                    <button class="list-group-item list-group-item-action" data-menu="evil-twin">├── 9. Evil Twin Attacks Menu</button>
+                    <button class="list-group-item list-group-item-action" data-menu="wep-attacks">└── 10. WEP Attacks Menu</button>
+                </div>
+            </div>
+
+            <!-- Exit -->
+            <div class="menu-section">
+                <div class="list-group">
+                    <button class="list-group-item list-group-item-action" data-menu="exit">└── 11. Exit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="airgeddon-submenu" class="mt-4" style="display:none;">
+        <button id="back-to-main" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Back to Main Menu</button>
+        <div id="submenu-content"></div>
+    </div>
+</div>
+
+<style>
+/* Airgeddon submodule styling */
+#airgeddon-menu .card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #0d6efd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+    transition: all 0.3s ease;
+}
+
+#airgeddon-menu .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.25);
+}
+
+.section-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #0d6efd;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #0d6efd;
+    padding-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+.list-group-item {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 0 !important;
+    background: transparent;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #0d6efd;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.1);
+}
+
+.menu-section .list-group {
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+#airgeddon-submenu .list-group-item {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+#airgeddon-submenu .list-group-item:hover {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    color: #856404;
+    transform: translateX(10px);
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+    #airgeddon-menu .card {
+        background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
+        border-color: #66b2ff;
+        box-shadow: 0 4px 12px rgba(102, 178, 255, 0.2);
+        color: #ddd;
+    }
+
+    #airgeddon-menu .card:hover {
+        box-shadow: 0 8px 25px rgba(102, 178, 255, 0.3);
+    }
+
+    .section-title {
+        color: #66b2ff;
+        border-bottom-color: #66b2ff;
+    }
+
+    .list-group-item {
+        color: #ddd;
+    }
+
+    .list-group-item:hover {
+        background: linear-gradient(135deg, #404040 0%, #555 100%);
+        color: #66b2ff;
+    }
+
+    .menu-section .list-group {
+        border-color: #66b2ff;
+        background: rgba(42, 42, 42, 0.8);
+    }
+
+    #airgeddon-submenu .list-group-item {
+        color: #ccc;
+    }
+
+    #airgeddon-submenu .list-group-item:hover {
+        background: linear-gradient(135deg, #4a4a4a 0%, #666 100%);
+        color: #ffcc00;
+    }
+}
+</style>

@@ -126,6 +126,18 @@
                                 </div>
                             </a>
                         </div>
+                        <div class="col-md-2 mb-3">
+                            <a href="#modules/airgeddon" class="card module-quick-card text-decoration-none">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-wifi fa-2x text-primary mb-2"></i>
+                                    <h6>Airgeddon</h6>
+                                    <small class="text-muted">Wireless auditing toolkit</small>
+                                    <div class="mt-2">
+                                        <span class="badge badge-success">Active</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +178,7 @@
                         <!-- Installed Modules Tab -->
                         <div class="tab-pane fade show active" id="installed" role="tabpanel">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h6>Installed Modules (5)</h6>
+                                <h6>Installed Modules (6)</h6>
                                 <div class="form-group mb-0">
                                     <input type="text" class="form-control form-control-sm" id="module-search" placeholder="Search modules...">
                                 </div>
@@ -328,6 +340,39 @@
                                                     <i class="bi bi-play"></i> Enable
                                                 </button>
                                                 <a href="#modules/packet-analyzer" class="btn btn-info btn-sm">
+                                                    <i class="bi bi-gear"></i> Configure
+                                                </a>
+                                                <button class="btn btn-outline-secondary btn-sm">
+                                                    <i class="bi bi-info"></i> Details
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Airgeddon Module -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="card module-card" data-module="airgeddon">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">
+                                                    <i class="bi bi-wifi text-primary"></i> Airgeddon
+                                                </h6>
+                                                <span class="badge badge-success">v11.30</span>
+                                            </div>
+                                            <p class="card-text small text-muted">
+                                                Wireless auditing toolkit with multiple attack flows and network discovery options. Supports WEP, WPA/WPA2, WPS, and Evil Twin attacks.
+                                            </p>
+                                            <div class="module-info small mb-2">
+                                                <span class="text-muted">Author: v1s1t0r</span>
+                                                <span class="mx-2">•</span>
+                                                <span class="text-muted">Size: 3.8 MB</span>
+                                            </div>
+                                            <div class="module-actions">
+                                                <button class="btn btn-success btn-sm toggle-module" data-module="airgeddon">
+                                                    <i class="bi bi-pause"></i> Disable
+                                                </button>
+                                                <a href="#modules/airgeddon" class="btn btn-info btn-sm">
                                                     <i class="bi bi-gear"></i> Configure
                                                 </a>
                                                 <button class="btn btn-outline-secondary btn-sm">
@@ -501,6 +546,77 @@
 
 .info-item:last-child {
     border-bottom: none;
+}
+
+/* Airgeddon module specific styling for light and dark mode */
+.module-card .card-body .bi-wifi {
+    color: #0d6efd; /* Bootstrap primary color */
+    filter: drop-shadow(0 0 2px rgba(13, 110, 253, 0.3));
+}
+
+.module-card .card-body .badge-success {
+    background: linear-gradient(135deg, #198754, #28a745);
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(25, 135, 84, 0.2);
+}
+
+.module-card[data-module="airgeddon"] {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #0d6efd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+    transition: all 0.3s ease;
+}
+
+.module-card[data-module="airgeddon"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.25);
+    border-color: #0056b3;
+}
+
+.module-card[data-module="airgeddon"] .card-body .bi-wifi {
+    animation: wifi-pulse 2s infinite;
+}
+
+@keyframes wifi-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+    .module-card {
+        border-color: #444;
+        background-color: #222;
+        color: #ddd;
+    }
+    .module-card:hover {
+        border-color: #0d6efd;
+        background-color: #333;
+    }
+    .module-card .card-body .bi-wifi {
+        color: #66b2ff;
+        filter: drop-shadow(0 0 3px rgba(102, 178, 255, 0.4));
+    }
+    .module-card .card-body .badge-success {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: #000;
+        box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+    }
+    .info-item {
+        border-bottom: 1px solid #555;
+    }
+
+    .module-card[data-module="airgeddon"] {
+        background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
+        border-color: #66b2ff;
+        box-shadow: 0 4px 12px rgba(102, 178, 255, 0.2);
+    }
+
+    .module-card[data-module="airgeddon"]:hover {
+        border-color: #99ccff;
+        box-shadow: 0 8px 25px rgba(102, 178, 255, 0.3);
+    }
 }
 </style>
 

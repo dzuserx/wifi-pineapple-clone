@@ -326,3 +326,5 @@ Each attack path includes:
 - Attack status tracking
 - Result verification
 - Recovery options
+
+> Note: Each menu includes validation checks for required tools and dependencies before options become available. The script maintains state and allows returning to previous menus.
